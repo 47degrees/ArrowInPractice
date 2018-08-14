@@ -6,9 +6,14 @@ import java.util.*
 
 class HousesMemoryStorage {
 
-  // Just a bunch of them, we're missing some houses for sure! ¯\_(ツ)_/¯
-  private val houses = Collections.synchronizedList(listOf(
-    House("Stark", Collections.synchronizedList(listOf(
+  /**
+   * Just a bunch of them, we're missing some houses for sure! ¯\_(ツ)_/¯.
+   *
+   * All collections are intentionally mutable since they mimic what a database would be. We need to be able to insert
+   * (store) new elements at any level.
+    */
+  private val houses = Collections.synchronizedList(mutableListOf(
+    House("Stark", Collections.synchronizedList(mutableListOf(
       Character("Eddard (Ned) Stark", "Patriarch, Lord of Winterfell, Warden of the North"),
       Character("Catelyn Stark", "Ned’s wife"),
       Character("Robb Stark", "Ned and Catelyn’s oldest son, heir to Winterfell"),
@@ -19,7 +24,7 @@ class HousesMemoryStorage {
       Character("Jon Snow", "Ned’s illegitimate son, member of the Night’s Watch"),
       Character("Benjen Stark", "Ned’s younger brother, First Ranger of the Night’s Watch")
     ))),
-    House("Lannister", Collections.synchronizedList(listOf(
+    House("Lannister", Collections.synchronizedList(mutableListOf(
       Character("Tywin Lannister", "Patriarch, Lord of Casterly Rock, Warden of the West"),
       Character("Cersei Lannister", "Tywin’s daughter, Queen of the Seven Kingdoms, Jaime’s twin sister"),
       Character("Jaime Lannister", "Tywin’s oldest son, Joffrey’s biological father, member of the Kingsguard"),
@@ -28,35 +33,35 @@ class HousesMemoryStorage {
       Character("Myrcella Baratheon", "Cersei’s eldest daughter, thought to be King Robert’s daughter, but is really Jaime’s daughter"),
       Character("Tommen Baratheon", "Cersei’s youngest son, thought to be King Robert’s son, but is really Jaime’s son")
     ))),
-    House("Baratheon", Collections.synchronizedList(listOf(
+    House("Baratheon", Collections.synchronizedList(mutableListOf(
       Character("Robert Baratheon", "Patriarch, King of the Seven Kingdoms"),
       Character("Stannis Baratheon", "Robert’s younger brother, Renley’s older brother, Lord of Dragonstone"),
       Character("Renly Baratheon", "Youngest of the Baratheon brothers, Lord of Storm’s End")
     ))),
-    House("Targaryen", Collections.synchronizedList(listOf(
+    House("Targaryen", Collections.synchronizedList(mutableListOf(
       Character("Daenerys Targereyn", "Mother of Dragons, Khaleesi"),
       Character("Viserys Targaryen", "Daenerys’s brother"),
       Character("Aerys II Targaryen", "Daenerys’s father, former King of the Seven Kingdoms, deceased")
     ))),
-    House("Greyjoy", Collections.synchronizedList(listOf(
+    House("Greyjoy", Collections.synchronizedList(mutableListOf(
       Character("Balon Greyjoy", "Patriarch, Lord of the Iron Islands"),
       Character("Theon Greyjoy", "Balon’s first-born son, heir apparent to the Iron Islands"),
       Character("Yara Greyjoy", "Balon’s only daughter and oldest child")
     ))),
-    House("Arryn", Collections.synchronizedList(listOf(
+    House("Arryn", Collections.synchronizedList(mutableListOf(
       Character("Jon Arryn", "Patriarch, former Hand of the King, deceased"),
       Character("Lysa Arryn", "Catelyn’s younger sister"),
       Character("Robert Arry", "Lysa’s son, Lord of the Eyrie")
     ))),
-    House("Martell", Collections.synchronizedList(listOf(
+    House("Martell", Collections.synchronizedList(mutableListOf(
       Character("Doran Martell", "Patriarch, Prince of Dorne"),
       Character("Oberyn Martell", "Doran’s youngest brother")
     ))),
-    House("Tully", Collections.synchronizedList(listOf(
+    House("Tully", Collections.synchronizedList(mutableListOf(
       Character("Hoster Tully", "Patriarch, Lord of Riverrun, Catelyn and Lysa’s father"),
       Character("Edmure Tully", "Hoster’s only son and heir to Riverrun")
     ))),
-    House("Tyrell", Collections.synchronizedList(listOf(
+    House("Tyrell", Collections.synchronizedList(mutableListOf(
       Character("Mace Tyrell", "Patriarch, Lord of Highgarden"),
       Character("Olenna Tyrell", "Mace’s mother"),
       Character("Margaery Tyrell", "Mace’s daughter, wife of Renly Baratheon"),
@@ -64,4 +69,6 @@ class HousesMemoryStorage {
     )))))
 
   fun getAll(): List<House> = houses
+
+  fun getByName(houseName: String): House? = houses.find { it.name == houseName }
 }

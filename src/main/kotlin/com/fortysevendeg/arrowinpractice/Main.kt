@@ -31,6 +31,9 @@ fun main(args: Array<String>) {
       get("/houses") {
         call.respond(mapOf("houses" to synchronized(housesStorage.getAll()) { housesStorage.getAll().toList() }))
       }
+      get("/houses/{}") {
+        call.respond(mapOf("houses" to synchronized(housesStorage.getAll()) { housesStorage.getAll().toList() }))
+      }
     }
   }.start(wait = true)
 }
