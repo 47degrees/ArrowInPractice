@@ -11,3 +11,5 @@ Some key points you'll learn:
 * How to achieve polymorphism using typeclasses.
 * How to use Optics to query and modify nested immutable data structures.
 * How to port an OOP oriented codebase to a pure typed functional style using Arrow.
+* How to encode sequential operations with a fancier syntax using Monad Comprehensions.
+* How to encode non-dependent operations using the Applicative Builder.
