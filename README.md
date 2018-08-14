@@ -16,6 +16,6 @@ Some key points you'll learn:
 
 ## Routes available
 
-* `http://0.0.0.0:8080`: Welcome page.
-* `http://0.0.0.0:8080/houses`: List of Houses with each one of their members.
-* `http://0.0.0.0:8080/houses/stark`: House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Greyjoy`, `Arryn`, `Martell`, `Tully`, `Tyrell`. We're probably missing some, so don't take it too seriously!)
+* [](http://0.0.0.0:8080): Welcome page.
+* [](http://0.0.0.0:8080/houses): List of Houses with each one of their members.
+* [](http://0.0.0.0:8080/houses/stark): House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Greyjoy`, `Arryn`, `Martell`, `Tully`, `Tyrell`. We're probably missing some, so don't take it too seriously!)
