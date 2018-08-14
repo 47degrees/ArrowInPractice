@@ -68,7 +68,9 @@ class HousesMemoryStorage {
       Character("Loras Tyrell", "Mace’s son, heir to House Tyrell")
     )))))
 
+  @Synchronized
   fun getAll(): List<House> = houses
 
-  fun getByName(houseName: String): House? = houses.find { it.name == houseName }
+  @Synchronized
+  fun getByName(houseName: String): House? = houses.find { it.name.toLowerCase() == houseName.toLowerCase() }
 }

@@ -7,6 +7,7 @@ import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.http.ContentType
 import io.ktor.jackson.jackson
+import io.ktor.request.path
 import io.ktor.response.respond
 import io.ktor.response.respondText
 import io.ktor.routing.get
@@ -29,10 +30,11 @@ fun main(args: Array<String>) {
         call.respondText("Welcome to the Game of Thrones API!", ContentType.Text.Html)
       }
       get("/houses") {
-        call.respond(mapOf("houses" to synchronized(housesStorage.getAll()) { housesStorage.getAll().toList() }))
+        call.respond(mapOf("houses" to housesStorage.getAll()))
       }
-      get("/houses/{}") {
-        call.respond(mapOf("houses" to synchronized(housesStorage.getAll()) { housesStorage.getAll().toList() }))
+      get("/houses/{houseName}") {
+        val houseName = call.request.path().substringAfterLast("/")
+        call.respond(mapOf(houseName to housesStorage.getByName(houseName)))
       }
     }
   }.start(wait = true)
