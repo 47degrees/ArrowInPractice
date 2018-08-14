@@ -13,3 +13,10 @@ Some key points you'll learn:
 * How to port an OOP oriented codebase to a pure typed functional style using Arrow.
 * How to encode sequential operations with a fancier syntax using Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.
+
+## Routes available
+
+* `http://0.0.0.0:8080`: Welcome page.
+* `http://0.0.0.0:8080/houses`: List of Houses with each one of their members.
+* `http://0.0.0.0:8080/houses/stark`: House by name.
+  *  **Names available**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Greyjoy`, `Arryn`, `Martell`, `Tully`, `Tyrell`. We're probably missing some, so don't take it too seriously!
