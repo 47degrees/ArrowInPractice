@@ -1,8 +1,8 @@
 # Arrow in practice
 
-Lambda.World Cádiz 2018 workshop hosted by @raulraja and @jorgecastilloprz.
+Lambda.World Cádiz 2018 workshop hosted by [@raulraja](https://twitter.com/raulraja) and [@JorgeCastilloPR](https://twitter.com/JorgeCastilloPR).
 
-On this workshop we will take a basic REST client coded using [ktor](https://ktor.io/) (@JetBrains) and will iterate over it to put [Arrow](https://arrow-kt.io/) into practice.
+On this workshop we will take a basic REST client coded using [ktor](https://ktor.io/) ([@JetBrains](https://www.jetbrains.com/)) and will iterate over it to put [Arrow](https://arrow-kt.io/) into practice.
 
 Some key points you'll learn:
 * How to model your application data using Arrow datatypes.
