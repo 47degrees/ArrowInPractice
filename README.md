@@ -14,7 +14,7 @@ Some key points you'll learn:
 * How to encode sequential operations with a fancier syntax using Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.
 
-# Routes
+# Unauthenticated Routes
 
 ## [GET] [http://0.0.0.0:8080](http://0.0.0.0:8080)
 Welcome page.
@@ -87,20 +87,6 @@ House by id. (**an int in**: `[1..9]`)
     "id" : 1,
     "name" : "Stark"
   }
-}
-```
-
-## [POST] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
-
-Create a new House or update an existent one. If there's already a House with the same name than the one posted, it will 
-get updated with the new details.
-
-### Request Payload
-
-```json
-{
-  "name" : "NewHouse",
-  "description" : "Some random description"
 }
 ```
 
@@ -380,5 +366,21 @@ Character details by Id. `id` must be an **int** in the range `[1..36]`.
     "name" : "Tyrion Lannister",
     "description" : "Tywin’s youngest son, acting Hand of the King and Master of Coin"
   }
+}
+```
+
+# Authenticated Routes
+
+## [POST] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
+
+Create a new House or update an existent one. If there's already a House with the same name than the one posted, it will 
+get updated with the new details.
+
+### Request Payload
+
+```json
+{
+  "name" : "NewHouse",
+  "description" : "Some random description"
 }
 ```
