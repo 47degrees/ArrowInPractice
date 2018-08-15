@@ -371,6 +371,11 @@ Character details by Id. `id` must be an **int** in the range `[1..36]`.
 
 # Authenticated Routes
 
+Authenticated routes use Basic Auth and require passing the following credentials encoded in Base64:
+```
+georgerrmartin:lambdaworldrules
+```
+
 ## [POST] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
 
 Create a new House or update an existent one. If there's already a House with the same name than the one posted, it will 
