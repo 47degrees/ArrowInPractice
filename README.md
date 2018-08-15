@@ -374,7 +374,7 @@ get updated with the new details.
 
 ### Response
 
-**Created**: (Found a house with the same name)
+**Created**:
 ```json
 {
   "message": "House created successfully."
@@ -404,14 +404,14 @@ it will get updated with the new details.
 
 ### Response
 
-**Created**: (Found a house with the same name)
+**Created**:
 ```json
 {
   "message": "Character created successfully."
 }
 ```
 
-**Updated**: (Found a house with the same name)
+**Updated**: (Found a Character with the same name)
 ```json
 {
   "message": "A Character with the same name was found and updated successfully."
