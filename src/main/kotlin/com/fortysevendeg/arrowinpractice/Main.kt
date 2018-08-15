@@ -1,7 +1,7 @@
 package com.fortysevendeg.arrowinpractice
 
 import com.fasterxml.jackson.databind.SerializationFeature
-import com.fortysevendeg.arrowinpractice.storage.HousesMemoryStorage
+import com.fortysevendeg.arrowinpractice.database.HousesMemoryDatabase
 import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
@@ -16,7 +16,7 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 
 fun main(args: Array<String>) {
-  val housesStorage = HousesMemoryStorage()
+  val housesStorage = HousesMemoryDatabase()
 
   embeddedServer(Netty, 8080) {
     install(ContentNegotiation) {

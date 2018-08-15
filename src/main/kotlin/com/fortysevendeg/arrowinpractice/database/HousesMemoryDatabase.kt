@@ -1,10 +1,10 @@
-package com.fortysevendeg.arrowinpractice.storage
+package com.fortysevendeg.arrowinpractice.database
 
 import com.fortysevendeg.arrowinpractice.model.Character
 import com.fortysevendeg.arrowinpractice.model.House
 import java.util.*
 
-class HousesMemoryStorage {
+class HousesMemoryDatabase {
 
   /**
    * Just a bunch of them, we're missing some houses for sure! ¯\_(ツ)_/¯.
