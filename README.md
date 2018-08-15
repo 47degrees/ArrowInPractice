@@ -90,6 +90,36 @@ House by id. (**an int in**: `[1..9]`)
 }
 ```
 
+## [POST] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
+
+Create a new House or update an existent one. If there's already a House with the same name than the one posted, it will 
+get updated with the new details.
+
+### Request Payload
+
+```json
+{
+	"name" : "NewHouse",
+	"description" : "Some random description"
+}
+```
+
+### Response
+
+**Created**: (Found a house with the same name)
+```json
+{
+    "message": "House created successfully."
+}
+```
+
+**Updated**: (Found a house with the same name)
+```json
+{
+    "message": "A House with the same name was found and updated successfully."
+}
+```
+
 ## [GET] [http://0.0.0.0:8080/houses/{id}/characters](http://0.0.0.0:8080/houses/1/characters)
 Characters per house Id. (`id` must be **an int in the range**: `[1..9]`)
 
