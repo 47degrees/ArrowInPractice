@@ -16,7 +16,7 @@ Some key points you'll learn:
 
 # Routes
 
-## [http://0.0.0.0:8080](http://0.0.0.0:8080)
+## GET [http://0.0.0.0:8080](http://0.0.0.0:8080)
 Welcome page.
 
 ### Response
@@ -338,7 +338,7 @@ Overall list of characters.
 ```
 
 ## [http://0.0.0.0:8080/characters/{id}](http://0.0.0.0:8080/characters/13)
-Character details by Id.
+Character details by Id. `id` must be an **int** in the range `[1..36]`.
 
 ### Response
 
