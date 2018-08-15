@@ -11,7 +11,6 @@ Some key points you'll learn:
 * How to use Optics to read and modify nested immutable data structures.
 * How to encode sequential operations with a fancier syntax using Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.
-* How to port an OOP oriented codebase to a pure typed functional style using Arrow.
 
 # Unauthenticated Routes
 
