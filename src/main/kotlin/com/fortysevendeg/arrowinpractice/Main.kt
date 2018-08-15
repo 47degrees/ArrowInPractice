@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
 
     routing {
       get("/") {
-        call.respondText("Welcome to the Game of Thrones API!", ContentType.Text.Html)
+        call.respond(mapOf("message" to "Welcome to the Game of Thrones API!"))
       }
 
       get("/houses") {

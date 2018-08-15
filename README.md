@@ -14,9 +14,78 @@ Some key points you'll learn:
 * How to encode sequential operations with a fancier syntax using Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.
 
-## Routes available
+# Routes
 
-* [http://0.0.0.0:8080](http://0.0.0.0:8080): Welcome page.
-* [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses): List of Houses with each one of their members.
-* [http://0.0.0.0:8080/houses/{houseName}](http://0.0.0.0:8080/houses/stark): House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Greyjoy`, `Arryn`, `Martell`, `Tully`, `Tyrell`. We're probably missing some, so don't take it too seriously!)
-* [http://0.0.0.0:8080/houses/{id}](http://0.0.0.0:8080/houses/1): House by id. (**an int in**: `[1..9]`)
+## [http://0.0.0.0:8080](http://0.0.0.0:8080)
+Welcome page.
+
+### Response
+```json
+{
+  "message": "Welcome to the Game of Thrones API!"
+}
+```
+
+## [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
+List of Houses.
+
+### Response
+```json
+{
+  "houses" : [ {
+    "id" : 1,
+    "name" : "Stark"
+  }, {
+    "id" : 2,
+    "name" : "Lannister"
+  }, {
+    "id" : 3,
+    "name" : "Baratheon"
+  }, {
+    "id" : 4,
+    "name" : "Targaryen"
+  }, {
+    "id" : 5,
+    "name" : "Greyjoy"
+  }, {
+    "id" : 6,
+    "name" : "Arryn"
+  }, {
+    "id" : 7,
+    "name" : "Martell"
+  }, {
+    "id" : 8,
+    "name" : "Tully"
+  }, {
+    "id" : 9,
+    "name" : "Tyrell"
+  } ]
+}
+```
+
+## [http://0.0.0.0:8080/houses/{houseName}](http://0.0.0.0:8080/houses/stark)
+House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Greyjoy`, `Arryn`, `Martell`, `Tully`, `Tyrell`. We're probably missing some, so don't take it too seriously!)
+
+### Response
+
+```json
+{
+  "stark" : {
+    "id" : 1,
+    "name" : "Stark"
+  }
+}
+```
+
+## [http://0.0.0.0:8080/houses/{id}](http://0.0.0.0:8080/houses/1)
+House by id. (**an int in**: `[1..9]`)
+
+### Response
+```json
+{
+  "1" : {
+    "id" : 1,
+    "name" : "Stark"
+  }
+}
+```
