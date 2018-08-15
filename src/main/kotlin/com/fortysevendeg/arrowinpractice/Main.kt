@@ -3,9 +3,11 @@ package com.fortysevendeg.arrowinpractice
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.database.HousesMemoryDatabase
+import com.fortysevendeg.arrowinpractice.error.InvalidHouseFormatException
 import com.fortysevendeg.arrowinpractice.error.InvalidIdException
 import com.fortysevendeg.arrowinpractice.error.NoCharactersFoundForHouse
 import com.fortysevendeg.arrowinpractice.error.NotFoundException
+import com.fortysevendeg.arrowinpractice.model.PostHouse
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
@@ -13,7 +15,9 @@ import io.ktor.features.ContentNegotiation
 import io.ktor.features.StatusPages
 import io.ktor.http.HttpStatusCode
 import io.ktor.jackson.jackson
+import io.ktor.request.ContentTransformationException
 import io.ktor.request.path
+import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.Routing
 import io.ktor.routing.get
@@ -61,6 +65,9 @@ private fun Application.setupStatusCodes() {
     exception<NoCharactersFoundForHouse> { exception ->
       call.respond(HttpStatusCode.NotFound, mapOf("error" to (exception.message ?: "")))
     }
+    exception<InvalidHouseFormatException> { exception ->
+      call.respond(HttpStatusCode.BadRequest, mapOf("error" to (exception.message ?: "")))
+    }
   }
 }
 
@@ -92,7 +99,17 @@ private fun Routing.houseDetailsEndpoint(housesDB: HousesMemoryDatabase) {
 
 private fun Routing.createOrUpdateHouseEndpoint(housesDB: HousesMemoryDatabase) {
   post("/houses/") {
-
+    try {
+      val postedHouse = call.receive<PostHouse>()
+      val created = housesDB.createOrUpdate(postedHouse)
+      if (created) {
+        call.respond(mapOf("message" to "House created successfully."))
+      } else {
+        call.respond(mapOf("message" to "A House with the same name was found and updated successfully."))
+      }
+    } catch (e: ContentTransformationException) {
+      throw InvalidHouseFormatException()
+    }
   }
 }
 

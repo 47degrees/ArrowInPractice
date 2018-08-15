@@ -1,6 +1,7 @@
 package com.fortysevendeg.arrowinpractice.database
 
 import com.fortysevendeg.arrowinpractice.model.House
+import com.fortysevendeg.arrowinpractice.model.PostHouse
 import java.util.*
 
 class HousesMemoryDatabase {
@@ -30,4 +31,29 @@ class HousesMemoryDatabase {
 
   @Synchronized
   fun getById(id: Long): House? = houses.find { it.id == id }
+
+  /**
+   * Inserts a new House in the Database or updates an existent one in case there's already one stored with the same
+   * name.
+   *
+   * @return true if created, false if updated.
+   */
+  @Synchronized
+  fun createOrUpdate(postedHouse: PostHouse): Boolean {
+    var found = false
+    houses.map {
+      if (it.name.toLowerCase() == postedHouse.name.toLowerCase()) {
+        House(it.id, postedHouse.name, postedHouse.description)
+        found = true
+      } else {
+        it
+      }
+    }
+    return if (!found) {
+      houses.add(House(houses.last().id + 1, postedHouse.name, postedHouse.description))
+      true
+    } else {
+      false
+    }
+  }
 }
