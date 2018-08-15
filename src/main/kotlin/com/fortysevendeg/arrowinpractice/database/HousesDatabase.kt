@@ -4,7 +4,7 @@ import com.fortysevendeg.arrowinpractice.model.House
 import com.fortysevendeg.arrowinpractice.model.PostHouse
 import java.util.*
 
-class HousesMemoryDatabase {
+class HousesDatabase {
 
   /**
    * Just a bunch of them, we're missing some houses for sure! ¯\_(ツ)_/¯.
@@ -40,20 +40,20 @@ class HousesMemoryDatabase {
    */
   @Synchronized
   fun createOrUpdate(postedHouse: PostHouse): Boolean {
-    var found = false
-    houses.map {
-      if (it.name.toLowerCase() == postedHouse.name.toLowerCase()) {
-        House(it.id, postedHouse.name, postedHouse.description)
-        found = true
-      } else {
-        it
-      }
-    }
-    return if (!found) {
-      houses.add(House(houses.last().id + 1, postedHouse.name, postedHouse.description))
-      true
-    } else {
+    val storedHouse = houses.find { it.name.toLowerCase() == postedHouse.name.toLowerCase() }
+    return if (storedHouse != null) {
+      val position = houses.indexOf(storedHouse)
+      houses[position] = House(
+        storedHouse.id,
+        postedHouse.name,
+        postedHouse.description)
       false
+    } else {
+      houses.add(House(
+        houses.last().id + 1,
+        postedHouse.name,
+        postedHouse.description))
+      true
     }
   }
 }

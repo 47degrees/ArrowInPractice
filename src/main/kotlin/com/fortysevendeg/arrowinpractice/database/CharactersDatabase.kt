@@ -1,6 +1,7 @@
 package com.fortysevendeg.arrowinpractice.database
 
 import com.fortysevendeg.arrowinpractice.model.Character
+import com.fortysevendeg.arrowinpractice.model.PostCharacter
 import java.util.*
 
 class CharactersDatabase {
@@ -49,7 +50,34 @@ class CharactersDatabase {
 
   @Synchronized
   fun getByHouseId(houseId: Long): List<Character> = characters.filter { it.houseId == houseId }
-  
+
   @Synchronized
   fun getById(id: Long): Character? = characters.find { it.id == id }
+
+  /**
+   * Inserts a new Character in the Database or updates an existent one in case there's already one stored with the same
+   * name.
+   *
+   * @return true if created, false if updated.
+   */
+  @Synchronized
+  fun createOrUpdate(postedCharacter: PostCharacter): Boolean {
+    val storedCharacter = characters.find { it.name.toLowerCase() == postedCharacter.name.toLowerCase() }
+    return if (storedCharacter != null) {
+      val position = characters.indexOf(storedCharacter)
+      characters[position] = Character(
+        postedCharacter.houseId,
+        storedCharacter.id,
+        postedCharacter.name,
+        postedCharacter.description)
+      false
+    } else {
+      characters.add(Character(
+        postedCharacter.houseId,
+        characters.last().id + 1,
+        postedCharacter.name,
+        postedCharacter.description))
+      true
+    }
+  }
 }

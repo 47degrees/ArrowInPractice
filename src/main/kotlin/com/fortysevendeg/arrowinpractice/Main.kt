@@ -2,11 +2,9 @@ package com.fortysevendeg.arrowinpractice
 
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
-import com.fortysevendeg.arrowinpractice.database.HousesMemoryDatabase
-import com.fortysevendeg.arrowinpractice.error.InvalidHouseFormatException
-import com.fortysevendeg.arrowinpractice.error.InvalidIdException
-import com.fortysevendeg.arrowinpractice.error.NoCharactersFoundForHouse
-import com.fortysevendeg.arrowinpractice.error.NotFoundException
+import com.fortysevendeg.arrowinpractice.database.HousesDatabase
+import com.fortysevendeg.arrowinpractice.error.*
+import com.fortysevendeg.arrowinpractice.model.PostCharacter
 import com.fortysevendeg.arrowinpractice.model.PostHouse
 import io.ktor.application.Application
 import io.ktor.application.call
@@ -27,7 +25,7 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 
 fun main(args: Array<String>) {
-  val housesDB = HousesMemoryDatabase()
+  val housesDB = HousesDatabase()
   val charactersDB = CharactersDatabase()
 
   embeddedServer(Netty, 8080) {
@@ -42,6 +40,7 @@ fun main(args: Array<String>) {
       charactersPerHouseEndpoint(charactersDB)
       charactersOverviewEndpoint(charactersDB)
       characterDetailsEndpoint(charactersDB)
+      createOrUpdateCharacterEndpoint(charactersDB)
     }
   }.start(wait = true)
 }
@@ -77,13 +76,13 @@ private fun Routing.welcomeEndpoint() {
   }
 }
 
-private fun Routing.housesOverviewEndpoint(housesDB: HousesMemoryDatabase) {
+private fun Routing.housesOverviewEndpoint(housesDB: HousesDatabase) {
   get("/houses") {
     call.respond(mapOf("houses" to housesDB.getAll()))
   }
 }
 
-private fun Routing.houseDetailsEndpoint(housesDB: HousesMemoryDatabase) {
+private fun Routing.houseDetailsEndpoint(housesDB: HousesDatabase) {
   get("/houses/{param}") {
     val param = call.request.path().substringAfterLast("/")
     try {
@@ -97,7 +96,7 @@ private fun Routing.houseDetailsEndpoint(housesDB: HousesMemoryDatabase) {
   }
 }
 
-private fun Routing.createOrUpdateHouseEndpoint(housesDB: HousesMemoryDatabase) {
+private fun Routing.createOrUpdateHouseEndpoint(housesDB: HousesDatabase) {
   post("/houses/") {
     try {
       val postedHouse = call.receive<PostHouse>()
@@ -145,6 +144,22 @@ private fun Routing.characterDetailsEndpoint(charactersDB: CharactersDatabase) {
       character?.let { call.respond(mapOf(characterId to character)) } ?: throw NotFoundException()
     } catch (e: NumberFormatException) {
       throw InvalidIdException()
+    }
+  }
+}
+
+private fun Routing.createOrUpdateCharacterEndpoint(charactersDB: CharactersDatabase) {
+  post("/characters/") {
+    try {
+      val postedCharacter = call.receive<PostCharacter>()
+      val created = charactersDB.createOrUpdate(postedCharacter)
+      if (created) {
+        call.respond(mapOf("message" to "Character created successfully."))
+      } else {
+        call.respond(mapOf("message" to "A Character with the same name was found and updated successfully."))
+      }
+    } catch (e: ContentTransformationException) {
+      throw InvalidCharacterFormatException()
     }
   }
 }
