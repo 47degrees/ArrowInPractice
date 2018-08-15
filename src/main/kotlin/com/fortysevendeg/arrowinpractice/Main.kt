@@ -17,6 +17,7 @@ import io.ktor.request.path
 import io.ktor.response.respond
 import io.ktor.routing.Routing
 import io.ktor.routing.get
+import io.ktor.routing.post
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
@@ -33,6 +34,7 @@ fun main(args: Array<String>) {
       welcomeEndpoint()
       housesOverviewEndpoint(housesDB)
       houseDetailsEndpoint(housesDB)
+      createOrUpdateHouseEndpoint(housesDB)
       charactersPerHouseEndpoint(charactersDB)
       charactersOverviewEndpoint(charactersDB)
       characterDetailsEndpoint(charactersDB)
@@ -85,6 +87,12 @@ private fun Routing.houseDetailsEndpoint(housesDB: HousesMemoryDatabase) {
       val house = housesDB.getByName(param)
       house?.let { call.respond(mapOf(param to house)) } ?: throw NotFoundException()
     }
+  }
+}
+
+private fun Routing.createOrUpdateHouseEndpoint(housesDB: HousesMemoryDatabase) {
+  post("/houses/") {
+
   }
 }
 
