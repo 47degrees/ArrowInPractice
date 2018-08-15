@@ -99,8 +99,8 @@ get updated with the new details.
 
 ```json
 {
-	"name" : "NewHouse",
-	"description" : "Some random description"
+  "name" : "NewHouse",
+  "description" : "Some random description"
 }
 ```
 
@@ -109,14 +109,14 @@ get updated with the new details.
 **Created**: (Found a house with the same name)
 ```json
 {
-    "message": "House created successfully."
+  "message": "House created successfully."
 }
 ```
 
 **Updated**: (Found a house with the same name)
 ```json
 {
-    "message": "A House with the same name was found and updated successfully."
+  "message": "A House with the same name was found and updated successfully."
 }
 ```
 
