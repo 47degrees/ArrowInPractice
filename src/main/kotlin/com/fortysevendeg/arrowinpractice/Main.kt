@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.database.HousesMemoryDatabase
 import com.fortysevendeg.arrowinpractice.error.InvalidHouseIdException
+import com.fortysevendeg.arrowinpractice.error.NoCharactersFoundForHouse
 import com.fortysevendeg.arrowinpractice.error.NotFoundException
 import io.ktor.application.call
 import io.ktor.application.install
@@ -38,6 +39,9 @@ fun main(args: Array<String>) {
       exception<NotFoundException> { exception ->
         call.respond(HttpStatusCode.NotFound, mapOf("error" to (exception.message ?: "")))
       }
+      exception<NoCharactersFoundForHouse> { exception ->
+        call.respond(HttpStatusCode.NotFound, mapOf("error" to (exception.message ?: "")))
+      }
     }
 
     routing {
@@ -65,9 +69,14 @@ fun main(args: Array<String>) {
         val houseId = call.request.path().substringAfter("/houses/").substringBefore("/characters")
         try {
           val id = houseId.toLong()
-          call.respond(mapOf("characters" to charactersDB.getByHouseId(id)))
+          val characters = charactersDB.getByHouseId(id)
+          if (characters.isNotEmpty()) {
+            call.respond(mapOf("characters" to characters))
+          } else {
+            throw NoCharactersFoundForHouse()
+          }
         } catch (e: NumberFormatException) {
-          throw InvalidHouseIdException("Invalid credentials")
+          throw InvalidHouseIdException()
         }
       }
 
