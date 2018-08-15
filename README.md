@@ -18,4 +18,5 @@ Some key points you'll learn:
 
 * [http://0.0.0.0:8080](http://0.0.0.0:8080): Welcome page.
 * [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses): List of Houses with each one of their members.
-* [http://0.0.0.0:8080/houses/stark](http://0.0.0.0:8080/houses/stark): House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Greyjoy`, `Arryn`, `Martell`, `Tully`, `Tyrell`. We're probably missing some, so don't take it too seriously!)
+* [http://0.0.0.0:8080/houses/{houseName}](http://0.0.0.0:8080/houses/stark): House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Greyjoy`, `Arryn`, `Martell`, `Tully`, `Tyrell`. We're probably missing some, so don't take it too seriously!)
+* [http://0.0.0.0:8080/houses/{id}](http://0.0.0.0:8080/houses/1): House by id. (**an int in**: `[1..9]`)
