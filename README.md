@@ -89,3 +89,59 @@ House by id. (**an int in**: `[1..9]`)
   }
 }
 ```
+
+## [http://0.0.0.0:8080/houses/{id}/characters](http://0.0.0.0:8080/houses/1/characters)
+Characters per house Id. (id must be **an int in the range**: `[1..9]`)
+
+### Response
+
+```json
+{
+  "characters" : [ {
+    "houseId" : 1,
+    "id" : 1,
+    "name" : "Eddard (Ned) Stark",
+    "description" : "Patriarch, Lord of Winterfell, Warden of the North"
+  }, {
+    "houseId" : 1,
+    "id" : 2,
+    "name" : "Catelyn Stark",
+    "description" : "Ned’s wife"
+  }, {
+    "houseId" : 1,
+    "id" : 3,
+    "name" : "Robb Stark",
+    "description" : "Ned and Catelyn’s oldest son, heir to Winterfell"
+  }, {
+    "houseId" : 1,
+    "id" : 4,
+    "name" : "Sansa Stark",
+    "description" : "Ned and Catelyn’s oldest daughter, betrothed to King Joffrey Baratheon"
+  }, {
+    "houseId" : 1,
+    "id" : 5,
+    "name" : "Arya Star",
+    "description" : "Catelyn’s youngest daughter"
+  }, {
+    "houseId" : 1,
+    "id" : 6,
+    "name" : "Bran Stark",
+    "description" : "Ned and Catelyn’s middle son"
+  }, {
+    "houseId" : 1,
+    "id" : 7,
+    "name" : "Rickon Stark",
+    "description" : "Ned and Catelyn’s youngest son"
+  }, {
+    "houseId" : 1,
+    "id" : 8,
+    "name" : "Jon Snow",
+    "description" : "Ned’s illegitimate son, member of the Night’s Watch"
+  }, {
+    "houseId" : 1,
+    "id" : 9,
+    "name" : "Benjen Stark",
+    "description" : "Ned’s younger brother, First Ranger of the Night’s Watch"
+  } ]
+}
+```
