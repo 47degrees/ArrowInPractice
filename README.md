@@ -16,7 +16,7 @@ Some key points you'll learn:
 
 # Routes
 
-## GET [http://0.0.0.0:8080](http://0.0.0.0:8080)
+## [GET] [http://0.0.0.0:8080](http://0.0.0.0:8080)
 Welcome page.
 
 ### Response
@@ -26,7 +26,7 @@ Welcome page.
 }
 ```
 
-## [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
+## [GET] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
 List of Houses.
 
 ### Response
@@ -63,7 +63,7 @@ List of Houses.
 }
 ```
 
-## [http://0.0.0.0:8080/houses/{houseName}](http://0.0.0.0:8080/houses/stark)
+## [GET] [http://0.0.0.0:8080/houses/{houseName}](http://0.0.0.0:8080/houses/stark)
 House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Greyjoy`, `Arryn`, `Martell`, `Tully`, `Tyrell`. We're probably missing some, so don't take it too seriously!)
 
 ### Response
@@ -77,7 +77,7 @@ House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Gre
 }
 ```
 
-## [http://0.0.0.0:8080/houses/{id}](http://0.0.0.0:8080/houses/1)
+## [GET] [http://0.0.0.0:8080/houses/{id}](http://0.0.0.0:8080/houses/1)
 House by id. (**an int in**: `[1..9]`)
 
 ### Response
@@ -90,7 +90,7 @@ House by id. (**an int in**: `[1..9]`)
 }
 ```
 
-## [http://0.0.0.0:8080/houses/{id}/characters](http://0.0.0.0:8080/houses/1/characters)
+## [GET] [http://0.0.0.0:8080/houses/{id}/characters](http://0.0.0.0:8080/houses/1/characters)
 Characters per house Id. (`id` must be **an int in the range**: `[1..9]`)
 
 ### Response
@@ -146,7 +146,7 @@ Characters per house Id. (`id` must be **an int in the range**: `[1..9]`)
 }
 ```
 
-## [http://0.0.0.0:8080/characters](http://0.0.0.0:8080/characters)
+## [GET] [http://0.0.0.0:8080/characters](http://0.0.0.0:8080/characters)
 Overall list of characters.
 
 ### Response
@@ -337,7 +337,7 @@ Overall list of characters.
 }
 ```
 
-## [http://0.0.0.0:8080/characters/{id}](http://0.0.0.0:8080/characters/13)
+## [GET] [http://0.0.0.0:8080/characters/{id}](http://0.0.0.0:8080/characters/13)
 Character details by Id. `id` must be an **int** in the range `[1..36]`.
 
 ### Response
