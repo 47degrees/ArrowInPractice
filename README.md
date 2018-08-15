@@ -337,4 +337,18 @@ Overall list of characters.
 }
 ```
 
-## 
+## [http://0.0.0.0:8080/characters/{id}](http://0.0.0.0:8080/characters/13)
+Character details by Id.
+
+### Response
+
+```json
+{
+  "13" : {
+    "houseId" : 2,
+    "id" : 13,
+    "name" : "Tyrion Lannister",
+    "description" : "Tywin’s youngest son, acting Hand of the King and Master of Coin"
+  }
+}
+```
