@@ -3,7 +3,7 @@ package com.fortysevendeg.arrowinpractice
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.database.HousesMemoryDatabase
-import com.fortysevendeg.arrowinpractice.error.InvalidHouseIdException
+import com.fortysevendeg.arrowinpractice.error.InvalidIdException
 import com.fortysevendeg.arrowinpractice.error.NoCharactersFoundForHouse
 import com.fortysevendeg.arrowinpractice.error.NotFoundException
 import io.ktor.application.call
@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
     }
 
     install(StatusPages) {
-      exception<InvalidHouseIdException> { exception ->
+      exception<InvalidIdException> { exception ->
         call.respond(HttpStatusCode.BadRequest, mapOf("error" to (exception.message ?: "")))
       }
       exception<NotFoundException> { exception ->
@@ -76,7 +76,7 @@ fun main(args: Array<String>) {
             throw NoCharactersFoundForHouse()
           }
         } catch (e: NumberFormatException) {
-          throw InvalidHouseIdException()
+          throw InvalidIdException()
         }
       }
 
@@ -84,13 +84,14 @@ fun main(args: Array<String>) {
         call.respond(mapOf("characters" to charactersDB.getAll()))
       }
 
-      get("/characters/{param}") {
+      get("/characters/{characterId}") {
         val param = call.request.path().substringAfterLast("/")
         try {
           val characterId = param.toLong()
-          call.respond(mapOf(characterId to charactersDB.getById(characterId)))
+          val character = charactersDB.getById(characterId)
+          character?.let { call.respond(mapOf(characterId to character)) } ?: throw NotFoundException()
         } catch (e: NumberFormatException) {
-          call.respond(mapOf(param to charactersDB.getByName(param)))
+          throw InvalidIdException()
         }
       }
     }

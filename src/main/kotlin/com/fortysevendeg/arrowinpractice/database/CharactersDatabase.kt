@@ -49,10 +49,7 @@ class CharactersDatabase {
 
   @Synchronized
   fun getByHouseId(houseId: Long): List<Character> = characters.filter { it.houseId == houseId }
-
-  @Synchronized
-  fun getByName(houseName: String): Character? = characters.find { it.name.toLowerCase() == houseName.toLowerCase() }
-
+  
   @Synchronized
   fun getById(id: Long): Character? = characters.find { it.id == id }
 }
