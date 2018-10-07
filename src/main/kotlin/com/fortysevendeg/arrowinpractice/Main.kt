@@ -18,6 +18,10 @@ import com.fortysevendeg.arrowinpractice.error.NotFoundException
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
+import io.ktor.auth.Authentication
+import io.ktor.auth.UserIdPrincipal
+import io.ktor.auth.UserPasswordCredential
+import io.ktor.auth.basic
 import io.ktor.features.ContentNegotiation
 import io.ktor.features.StatusPages
 import io.ktor.http.HttpStatusCode
@@ -32,13 +36,26 @@ fun main(args: Array<String>) {
   val charactersDB = CharactersDatabase()
 
   embeddedServer(Netty, 8080) {
-    enableJacksonContentNegotiation()
+    setupAuthentication()
+    setupContentNegotiation()
     setupStatusCodes()
     setupRoutes(housesDB, charactersDB)
   }.start(wait = true)
 }
 
-private fun Application.enableJacksonContentNegotiation() {
+private fun Application.setupAuthentication() {
+  install(Authentication) {
+    basic {
+      realm = "got-api"
+      validate { credentials -> if (isValid(credentials)) UserIdPrincipal("georgerrmartin") else null }
+    }
+  }
+}
+
+private fun isValid(it: UserPasswordCredential) =
+  it.name == "georgerrmartin" && it.password == "lambdaworldrules"
+
+private fun Application.setupContentNegotiation() {
   install(ContentNegotiation) {
     jackson {
       enable(SerializationFeature.INDENT_OUTPUT) // pretty print json
