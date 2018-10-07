@@ -52,7 +52,16 @@ class CharactersDatabase {
   fun getByHouseId(houseId: Long): List<Character> = characters.filter { it.houseId == houseId }
 
   @Synchronized
+  fun getByName(characterName: String): Character? = characters.findLast { it.name == characterName }
+
+  @Synchronized
   fun getById(id: Long): Character? = characters.find { it.id == id }
+
+  operator fun get(id: Long): Character? = getById(id)
+
+  operator fun get(characterName: String): Character? = getByName(characterName)
+
+  operator fun get(houseId: Long): List<Character> = getByHouseId(houseId)
 
   /**
    * Inserts a new Character in the Database or updates an existent one in case there's already one stored with the same
