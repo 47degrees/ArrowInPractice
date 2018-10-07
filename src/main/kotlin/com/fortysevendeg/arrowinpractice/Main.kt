@@ -3,10 +3,15 @@ package com.fortysevendeg.arrowinpractice
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.database.HousesDatabase
-import com.fortysevendeg.arrowinpractice.error.*
-import com.fortysevendeg.arrowinpractice.model.House
+import com.fortysevendeg.arrowinpractice.error.InvalidCharacterFormatException
+import com.fortysevendeg.arrowinpractice.error.InvalidHouseFormatException
+import com.fortysevendeg.arrowinpractice.error.InvalidIdException
+import com.fortysevendeg.arrowinpractice.error.NoCharactersFoundForHouse
+import com.fortysevendeg.arrowinpractice.error.NotFoundException
 import com.fortysevendeg.arrowinpractice.model.PostCharacter
 import com.fortysevendeg.arrowinpractice.model.PostHouse
+import com.fortysevendeg.arrowinpractice.serialization.cId
+import com.fortysevendeg.arrowinpractice.serialization.hId
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
@@ -36,19 +41,6 @@ fun main(args: Array<String>) {
   }.start(wait = true)
 }
 
-private fun Application.setupRoutes(housesDB: HousesDatabase, charactersDB: CharactersDatabase) {
-  routing {
-    welcomeEndpoint()
-    housesOverviewEndpoint(housesDB)
-    houseDetailsEndpoint(housesDB)
-    createOrUpdateHouseEndpoint(housesDB)
-    charactersPerHouseEndpoint(charactersDB)
-    charactersOverviewEndpoint(charactersDB)
-    characterDetailsEndpoint(charactersDB)
-    createOrUpdateCharacterEndpoint(charactersDB)
-  }
-}
-
 private fun Application.enableJacksonContentNegotiation() {
   install(ContentNegotiation) {
     jackson {
@@ -74,6 +66,19 @@ private fun Application.setupStatusCodes() {
   }
 }
 
+private fun Application.setupRoutes(housesDB: HousesDatabase, charactersDB: CharactersDatabase) {
+  routing {
+    welcomeEndpoint()
+    housesOverviewEndpoint(housesDB)
+    houseDetailsEndpoint(housesDB)
+    createOrUpdateHouseEndpoint(housesDB)
+    charactersPerHouseEndpoint(charactersDB)
+    charactersOverviewEndpoint(charactersDB)
+    characterDetailsEndpoint(charactersDB)
+    createOrUpdateCharacterEndpoint(charactersDB)
+  }
+}
+
 private fun Routing.welcomeEndpoint() {
   get("/") {
     call.respond(mapOf("message" to "Welcome to the Game of Thrones API!"))
@@ -90,12 +95,12 @@ private fun Routing.houseDetailsEndpoint(housesDB: HousesDatabase) {
   get("/houses/{param}") {
     val param = call.request.path().substringAfterLast("/")
     try {
-      val houseId = param.toLong()
-      val house = housesDB.getById(houseId)
-      house?.let { call.respond(mapOf(houseId to house)) } ?: throw NotFoundException()
-    } catch (e: NumberFormatException) {
-      val house = housesDB.getByName(param)
-      house?.let { call.respond(mapOf(param to house)) } ?: throw NotFoundException()
+      val houseId = param.toLong().hId()
+      val maybeHouse = housesDB[houseId]
+      maybeHouse?.let { house -> call.respond(mapOf(houseId to house)) } ?: throw NotFoundException()
+    } catch (e: NumberFormatException) { // then param is not a long, so we assume it's a house name.
+      val maybeHouse = housesDB[param]
+      maybeHouse?.let { house -> call.respond(mapOf(param to house)) } ?: throw NotFoundException()
     }
   }
 }
@@ -120,7 +125,7 @@ private fun Routing.charactersPerHouseEndpoint(charactersDB: CharactersDatabase)
   get("/houses/{houseId}/characters") {
     val houseId = call.request.path().substringAfter("/houses/").substringBefore("/characters")
     try {
-      val id = houseId.toLong()
+      val id = houseId.toLong().hId()
       val characters = charactersDB.getByHouseId(id)
       if (characters.isNotEmpty()) {
         call.respond(mapOf("characters" to characters))
@@ -143,9 +148,9 @@ private fun Routing.characterDetailsEndpoint(charactersDB: CharactersDatabase) {
   get("/characters/{characterId}") {
     val param = call.request.path().substringAfterLast("/")
     try {
-      val characterId = param.toLong()
-      val character = charactersDB.getById(characterId)
-      character?.let { call.respond(mapOf(characterId to character)) } ?: throw NotFoundException()
+      val characterId = param.toLong().cId()
+      val maybeCharacter = charactersDB.getById(characterId)
+      maybeCharacter?.let { character -> call.respond(mapOf(characterId to character)) } ?: throw NotFoundException()
     } catch (e: NumberFormatException) {
       throw InvalidIdException()
     }

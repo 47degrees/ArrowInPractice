@@ -3,7 +3,7 @@ package com.fortysevendeg.arrowinpractice.database
 import com.fortysevendeg.arrowinpractice.model.House
 import com.fortysevendeg.arrowinpractice.model.HouseId
 import com.fortysevendeg.arrowinpractice.model.PostHouse
-import com.fortysevendeg.arrowinpractice.model.hId
+import com.fortysevendeg.arrowinpractice.serialization.hId
 import java.util.*
 
 class HousesDatabase {

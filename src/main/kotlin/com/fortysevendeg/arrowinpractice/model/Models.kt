@@ -10,10 +10,3 @@ data class Character(val houseId: HouseId,
                      val id: CharacterId,
                      val name: String,
                      val description: String)
-
-// Some extension function utilities for syntax.
-
-fun Long.hId(): HouseId = HouseId(this)
-fun Int.hId(): HouseId = HouseId(this.toLong())
-fun Long.cId(): CharacterId = CharacterId(this)
-fun Int.cId(): CharacterId = CharacterId(this.toLong())
