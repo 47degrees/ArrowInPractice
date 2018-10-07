@@ -75,7 +75,7 @@ class CharactersDatabase {
    */
   @Synchronized
   fun createOrUpdate(postedCharacter: PostCharacter): Boolean {
-    val storedCharacter = characters.find { it.name.toLowerCase() == postedCharacter.name.toLowerCase() }
+    val storedCharacter = getByName(postedCharacter.name)
     return if (storedCharacter != null) {
       val position = characters.indexOf(storedCharacter)
       characters[position] = Character(
