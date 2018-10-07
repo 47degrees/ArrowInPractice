@@ -430,6 +430,8 @@ There are `HTTP Request` files for each one of the endpoints into the `httpqueri
 have IntellIJ Ultimate installed, you can run them just by using the IDE and perform a real request to the endpoint. (Don't 
 forget to run the app so you get your local server deployed to localhost).
 
+![Http Requests Screenshot](./assets/HttpRequestsSS.png)
+
 ## Tests
 
 * TBD
