@@ -7,6 +7,8 @@ import io.ktor.routing.get
 
 /**
  * Standard Home / Welcome page endpoint. Just a static read only response that we'll not care much about.
+ *
+ * Authentication: Public.
  */
 fun Routing.welcomeEndpoint() {
   get("/") {

@@ -4,6 +4,7 @@ import com.fortysevendeg.arrowinpractice.database.HousesDatabase
 import com.fortysevendeg.arrowinpractice.error.InvalidHouseFormatException
 import com.fortysevendeg.arrowinpractice.model.PostHouse
 import io.ktor.application.call
+import io.ktor.auth.authenticate
 import io.ktor.request.ContentTransformationException
 import io.ktor.request.receive
 import io.ktor.response.respond
@@ -13,19 +14,23 @@ import io.ktor.routing.post
 /**
  * POST: Create a new House or alternatively update an already existing one. It expects a [[PostHouse]] passed in the
  * json payload.
+ *
+ * Authentication: Basic (user:password encoded in Base64).
  */
 fun Routing.createOrUpdateHouseEndpoint(housesDB: HousesDatabase) {
-  post("/houses/") {
-    try {
-      val postedHouse = call.receive<PostHouse>()
-      val created = housesDB.createOrUpdate(postedHouse)
-      if (created) {
-        call.respond(mapOf("message" to "House created successfully."))
-      } else {
-        call.respond(mapOf("message" to "A House with the same name was found and updated successfully."))
+  authenticate {
+    post("/houses/") {
+      try {
+        val postedHouse = call.receive<PostHouse>()
+        val created = housesDB.createOrUpdate(postedHouse)
+        if (created) {
+          call.respond(mapOf("message" to "House created successfully."))
+        } else {
+          call.respond(mapOf("message" to "A House with the same name was found and updated successfully."))
+        }
+      } catch (e: ContentTransformationException) {
+        throw InvalidHouseFormatException()
       }
-    } catch (e: ContentTransformationException) {
-      throw InvalidHouseFormatException()
     }
   }
 }
