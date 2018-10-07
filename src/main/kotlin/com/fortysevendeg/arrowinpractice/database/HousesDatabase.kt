@@ -33,6 +33,16 @@ class HousesDatabase {
   fun getById(id: Long): House? = houses.find { it.id == id }
 
   /**
+   * Enabling indexed access operator for fetching by id, as in housesDB[8].
+   */
+  operator fun get(id: Long): House? = getById(id)
+
+  /**
+   * Enabling indexed access operator for fetching by name, as in housesDB["Stark"].
+   */
+  operator fun get(houseName: String): House? = getByName(houseName)
+
+  /**
    * Inserts a new House in the Database or updates an existent one in case there's already one stored with the same
    * name.
    *

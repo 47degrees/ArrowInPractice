@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.database.HousesDatabase
 import com.fortysevendeg.arrowinpractice.error.*
+import com.fortysevendeg.arrowinpractice.model.House
 import com.fortysevendeg.arrowinpractice.model.PostCharacter
 import com.fortysevendeg.arrowinpractice.model.PostHouse
 import io.ktor.application.Application
@@ -31,18 +32,21 @@ fun main(args: Array<String>) {
   embeddedServer(Netty, 8080) {
     enableJacksonContentNegotiation()
     setupStatusCodes()
-
-    routing {
-      welcomeEndpoint()
-      housesOverviewEndpoint(housesDB)
-      houseDetailsEndpoint(housesDB)
-      createOrUpdateHouseEndpoint(housesDB)
-      charactersPerHouseEndpoint(charactersDB)
-      charactersOverviewEndpoint(charactersDB)
-      characterDetailsEndpoint(charactersDB)
-      createOrUpdateCharacterEndpoint(charactersDB)
-    }
+    setupRoutes(housesDB, charactersDB)
   }.start(wait = true)
+}
+
+private fun Application.setupRoutes(housesDB: HousesDatabase, charactersDB: CharactersDatabase) {
+  routing {
+    welcomeEndpoint()
+    housesOverviewEndpoint(housesDB)
+    houseDetailsEndpoint(housesDB)
+    createOrUpdateHouseEndpoint(housesDB)
+    charactersPerHouseEndpoint(charactersDB)
+    charactersOverviewEndpoint(charactersDB)
+    characterDetailsEndpoint(charactersDB)
+    createOrUpdateCharacterEndpoint(charactersDB)
+  }
 }
 
 private fun Application.enableJacksonContentNegotiation() {
