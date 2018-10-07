@@ -11,8 +11,8 @@ import io.ktor.routing.Routing
 import io.ktor.routing.post
 
 /**
- * Creates a new Character or alternatively updates an already existing one. It expects a [[PostCharacter]] passed in
- * the json payload.
+ * POST: Creates a new Character or alternatively updates an already existing one. It expects a [[PostCharacter]] passed
+ * in the json payload.
  */
 fun Routing.createOrUpdateCharacterEndpoint(charactersDB: CharactersDatabase) {
   post("/characters/") {

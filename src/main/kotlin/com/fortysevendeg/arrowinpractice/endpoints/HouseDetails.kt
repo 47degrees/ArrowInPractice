@@ -10,7 +10,7 @@ import io.ktor.routing.Routing
 import io.ktor.routing.get
 
 /**
- * Provides the details of a GoT House. {param} can be a house Id or alternatively a house name.
+ * GET: Provides the details of a GoT House. {param} can be a house Id or alternatively a house name.
  */
 fun Routing.houseDetailsEndpoint(housesDB: HousesDatabase) {
   get("/houses/{param}") {

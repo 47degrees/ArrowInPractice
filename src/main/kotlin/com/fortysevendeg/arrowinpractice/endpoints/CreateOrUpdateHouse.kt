@@ -11,8 +11,8 @@ import io.ktor.routing.Routing
 import io.ktor.routing.post
 
 /**
- * Create a new House or alternatively update an already existing one. It expects a [[PostHouse]] passed in the json
- * payload.
+ * POST: Create a new House or alternatively update an already existing one. It expects a [[PostHouse]] passed in the
+ * json payload.
  */
 fun Routing.createOrUpdateHouseEndpoint(housesDB: HousesDatabase) {
   post("/houses/") {

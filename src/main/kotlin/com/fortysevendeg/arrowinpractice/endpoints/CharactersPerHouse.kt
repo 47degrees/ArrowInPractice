@@ -11,7 +11,7 @@ import io.ktor.routing.Routing
 import io.ktor.routing.get
 
 /**
- * Provides a list of characters for a given house Id.
+ * GET: Provides a list of characters for a given house Id.
  */
 fun Routing.charactersPerHouseEndpoint(charactersDB: CharactersDatabase) {
   get("/houses/{houseId}/characters") {

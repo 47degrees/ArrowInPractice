@@ -11,7 +11,7 @@ import io.ktor.routing.Routing
 import io.ktor.routing.get
 
 /**
- * Provides the character details for a given character Id.
+ * GET: Provides the character details for a given character Id.
  */
 fun Routing.characterDetailsEndpoint(charactersDB: CharactersDatabase) {
   get("/characters/{characterId}") {

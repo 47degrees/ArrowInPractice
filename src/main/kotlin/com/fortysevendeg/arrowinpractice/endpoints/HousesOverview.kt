@@ -7,7 +7,7 @@ import io.ktor.routing.Routing
 import io.ktor.routing.get
 
 /**
- * Provides a list of GoT Houses.
+ * GET: Provides a list of GoT Houses.
  */
 fun Routing.housesOverviewEndpoint(housesDB: HousesDatabase) {
   get("/houses") {

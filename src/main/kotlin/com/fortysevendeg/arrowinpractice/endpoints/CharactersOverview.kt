@@ -7,7 +7,7 @@ import io.ktor.routing.Routing
 import io.ktor.routing.get
 
 /**
- * Provides the complete list of GoT characters available overall.
+ * GET: Provides the complete list of GoT characters available overall.
  */
 fun Routing.charactersOverviewEndpoint(charactersDB: CharactersDatabase) {
   get("/characters/") {
