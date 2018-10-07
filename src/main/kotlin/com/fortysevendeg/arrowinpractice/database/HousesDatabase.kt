@@ -32,10 +32,10 @@ class HousesDatabase {
   fun getByName(houseName: String): House? = houses.find { it.name.toLowerCase() == houseName.toLowerCase() }
 
   @Synchronized
-  fun getById(id: HouseId): House? = houses.find { it.id == id }
+  fun getById(id: HouseId): House? = houses.find { it.houseId == id }
 
   /**
-   * Enabling indexed access operator for fetching by id, as in housesDB[8].
+   * Enabling indexed access operator for fetching by houseId, as in housesDB[8].
    */
   operator fun get(id: HouseId): House? = getById(id)
 
@@ -56,13 +56,13 @@ class HousesDatabase {
     return if (storedHouse != null) {
       val position = houses.indexOf(storedHouse)
       houses[position] = House(
-        storedHouse.id,
+        storedHouse.houseId,
         postedHouse.name,
         postedHouse.description)
       false
     } else {
       houses.add(House(
-        (houses.last().id.id + 1).hId(),
+        (houses.last().houseId.id + 1).hId(),
         postedHouse.name,
         postedHouse.description))
       true

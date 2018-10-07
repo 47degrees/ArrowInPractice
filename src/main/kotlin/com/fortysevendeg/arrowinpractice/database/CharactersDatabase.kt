@@ -4,8 +4,8 @@ import com.fortysevendeg.arrowinpractice.model.Character
 import com.fortysevendeg.arrowinpractice.model.CharacterId
 import com.fortysevendeg.arrowinpractice.model.HouseId
 import com.fortysevendeg.arrowinpractice.model.PostCharacter
-import com.fortysevendeg.arrowinpractice.model.cId
-import com.fortysevendeg.arrowinpractice.model.hId
+import com.fortysevendeg.arrowinpractice.serialization.cId
+import com.fortysevendeg.arrowinpractice.serialization.hId
 import java.util.*
 
 class CharactersDatabase {
@@ -59,7 +59,7 @@ class CharactersDatabase {
   fun getByName(characterName: String): Character? = characters.findLast { it.name == characterName }
 
   @Synchronized
-  fun getById(id: CharacterId): Character? = characters.find { it.id == id }
+  fun getById(id: CharacterId): Character? = characters.find { it.characterId == id }
 
   operator fun get(id: CharacterId): Character? = getById(id)
 
@@ -80,14 +80,14 @@ class CharactersDatabase {
       val position = characters.indexOf(storedCharacter)
       characters[position] = Character(
         postedCharacter.houseId.hId(),
-        storedCharacter.id,
+        storedCharacter.characterId,
         postedCharacter.name,
         postedCharacter.description)
       false
     } else {
       characters.add(Character(
         postedCharacter.houseId.hId(),
-        (characters.last().id.id + 1).cId(),
+        (characters.last().characterId.id + 1).cId(),
         postedCharacter.name,
         postedCharacter.description))
       true
