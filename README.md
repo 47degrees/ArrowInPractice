@@ -431,6 +431,7 @@ have IntellIJ Ultimate installed, you can run them just by using the IDE and per
 forget to run the app so you get your local server deployed to localhost).
 
 ![Http Requests Screenshot](./assets/HttpRequestsSS.png)
+![Http Requests Screenshot2](./assets/HttpRequestsSS2.png)
 
 ## Tests
 
