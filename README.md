@@ -12,6 +12,10 @@ Some key points you'll learn:
 * How to encode sequential operations with a fancier syntax using Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.
 
+# Serialization
+
+All content negotiation (serialization / deserialization) is handled using the `Ktor` built in `Jackson` support.
+
 # Unauthenticated Routes
 
 ## [GET] [http://0.0.0.0:8080](http://0.0.0.0:8080)
@@ -22,6 +26,13 @@ Welcome page.
 {
   "message": "Welcome to the Game of Thrones API!"
 }
+```
+
+# Authenticated Routes
+
+Authenticated routes use Basic Auth and require passing the following credentials encoded in Base64:
+```
+georgerrmartin:lambdaworldrules
 ```
 
 ## [GET] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
@@ -349,13 +360,6 @@ Character details by Id. `id` must be an **int** in the range `[1..36]`.
     "description" : "Tywin’s youngest son, acting Hand of the King and Master of Coin"
   }
 }
-```
-
-# Authenticated Routes
-
-Authenticated routes use Basic Auth and require passing the following credentials encoded in Base64:
-```
-georgerrmartin:lambdaworldrules
 ```
 
 ## [POST] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
