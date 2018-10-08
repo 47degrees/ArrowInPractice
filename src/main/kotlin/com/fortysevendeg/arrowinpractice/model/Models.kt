@@ -14,4 +14,4 @@ data class Character(val houseId: HouseId,
                      val name: String,
                      val description: String)
 
-data class Castle(val castleId: Long, val description: String)
+data class Castle(val castleId: CastleId, val name: String, val description: String)

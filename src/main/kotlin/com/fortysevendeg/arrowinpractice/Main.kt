@@ -1,6 +1,7 @@
 package com.fortysevendeg.arrowinpractice
 
 import com.fasterxml.jackson.databind.SerializationFeature
+import com.fortysevendeg.arrowinpractice.database.CastlesDatabase
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.database.HousesDatabase
 import com.fortysevendeg.arrowinpractice.endpoints.characterDetailsEndpoint
@@ -34,12 +35,13 @@ import io.ktor.server.netty.Netty
 fun main(args: Array<String>) {
   val housesDB = HousesDatabase()
   val charactersDB = CharactersDatabase()
+  val castlesDB = CastlesDatabase()
 
   embeddedServer(Netty, 8080) {
     setupAuthentication()
     setupContentNegotiation()
     setupStatusCodes()
-    setupRoutes(housesDB, charactersDB)
+    setupRoutes(housesDB, charactersDB, castlesDB)
   }.start(wait = true)
 }
 
@@ -80,7 +82,7 @@ private fun Application.setupStatusCodes() {
   }
 }
 
-private fun Application.setupRoutes(housesDB: HousesDatabase, charactersDB: CharactersDatabase) {
+private fun Application.setupRoutes(housesDB: HousesDatabase, charactersDB: CharactersDatabase, castlesDB: CastlesDatabase) {
   routing {
     welcomeEndpoint()
     housesOverviewEndpoint(housesDB)

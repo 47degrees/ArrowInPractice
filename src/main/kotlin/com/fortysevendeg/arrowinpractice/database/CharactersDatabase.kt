@@ -82,6 +82,7 @@ class CharactersDatabase {
       characters[position] = Character(
         postedCharacter.houseId.houseId(),
         storedCharacter.characterId,
+        postedCharacter.castleId.castleId(),
         postedCharacter.name,
         postedCharacter.description)
       false
@@ -89,6 +90,7 @@ class CharactersDatabase {
       characters.add(Character(
         postedCharacter.houseId.houseId(),
         (characters.last().characterId.id + 1).characterId(),
+        postedCharacter.castleId.castleId(),
         postedCharacter.name,
         postedCharacter.description))
       true
