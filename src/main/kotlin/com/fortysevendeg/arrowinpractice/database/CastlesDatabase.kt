@@ -6,7 +6,7 @@ import com.fortysevendeg.arrowinpractice.model.PostHouse
 import com.fortysevendeg.arrowinpractice.serialization.houseId
 import java.util.*
 
-class HousesDatabase {
+class CastlesDatabase {
 
   /**
    * Just a bunch of them, we're missing some houses for sure! ¯\_(ツ)_/¯.
@@ -14,7 +14,7 @@ class HousesDatabase {
    * All collections are intentionally mutable since they mimic what a database would be. We need to be able to insert
    * (store) new elements at any level.
    */
-  private val houses = Collections.synchronizedList(mutableListOf(
+  private val castles = Collections.synchronizedList(mutableListOf(
     House(1.houseId(), "Stark", "They are the ruler of the north or in other words the main house of the north. They rule from the Castle of Winterfell."),
     House(2.houseId(), "Lannister", "They are the warden of the west or the main house of the west. The rule from the Casterly Rock of the Westerlands."),
     House(3.houseId(), "Baratheon", "Their dynasty starts after Robert Baratheon defeated The Mad King."),

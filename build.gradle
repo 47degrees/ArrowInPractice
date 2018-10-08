@@ -2,8 +2,8 @@ group 'com.47deg'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.2.51'
-    ext.ktor_version = '0.9.3'
+    ext.kotlin_version = '1.2.71'
+    ext.ktor_version = '0.9.5'
     ext.arrow_version = "0.7.2"
 
     repositories {

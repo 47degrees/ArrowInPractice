@@ -2,7 +2,7 @@ package com.fortysevendeg.arrowinpractice.endpoints
 
 import com.fortysevendeg.arrowinpractice.database.HousesDatabase
 import com.fortysevendeg.arrowinpractice.error.NotFoundException
-import com.fortysevendeg.arrowinpractice.serialization.hId
+import com.fortysevendeg.arrowinpractice.serialization.houseId
 import io.ktor.application.call
 import io.ktor.auth.authenticate
 import io.ktor.request.path
@@ -20,7 +20,7 @@ fun Routing.houseDetailsEndpoint(housesDB: HousesDatabase) {
     get("/houses/{param}") {
       val param = call.request.path().substringAfterLast("/")
       try {
-        val houseId = param.toLong().hId()
+        val houseId = param.toLong().houseId()
         val maybeHouse = housesDB[houseId]
         maybeHouse?.let { house -> call.respond(mapOf(houseId to house)) } ?: throw NotFoundException()
       } catch (e: NumberFormatException) { // then param is not a long, so we assume it's a house name.

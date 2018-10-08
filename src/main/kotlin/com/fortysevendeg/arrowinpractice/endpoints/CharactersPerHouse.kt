@@ -3,7 +3,7 @@ package com.fortysevendeg.arrowinpractice.endpoints
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.error.InvalidIdException
 import com.fortysevendeg.arrowinpractice.error.NoCharactersFoundForHouse
-import com.fortysevendeg.arrowinpractice.serialization.hId
+import com.fortysevendeg.arrowinpractice.serialization.houseId
 import io.ktor.application.call
 import io.ktor.auth.authenticate
 import io.ktor.request.path
@@ -21,7 +21,7 @@ fun Routing.charactersPerHouseEndpoint(charactersDB: CharactersDatabase) {
     get("/houses/{houseId}/characters") {
       val houseId = call.request.path().substringAfter("/houses/").substringBefore("/characters")
       try {
-        val id = houseId.toLong().hId()
+        val id = houseId.toLong().houseId()
         val characters = charactersDB.getByHouseId(id)
         if (characters.isNotEmpty()) {
           call.respond(mapOf("characters" to characters))

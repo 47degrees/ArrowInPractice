@@ -3,7 +3,7 @@ package com.fortysevendeg.arrowinpractice.endpoints
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.error.InvalidIdException
 import com.fortysevendeg.arrowinpractice.error.NotFoundException
-import com.fortysevendeg.arrowinpractice.serialization.cId
+import com.fortysevendeg.arrowinpractice.serialization.characterId
 import io.ktor.application.call
 import io.ktor.auth.authenticate
 import io.ktor.request.path
@@ -21,7 +21,7 @@ fun Routing.characterDetailsEndpoint(charactersDB: CharactersDatabase) {
     get("/characters/{characterId}") {
       val param = call.request.path().substringAfterLast("/")
       try {
-        val characterId = param.toLong().cId()
+        val characterId = param.toLong().characterId()
         val maybeCharacter = charactersDB.getById(characterId)
         maybeCharacter?.let { character -> call.respond(mapOf(characterId to character)) } ?: throw NotFoundException()
       } catch (e: NumberFormatException) {
