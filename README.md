@@ -42,32 +42,59 @@ List of Houses.
 ```json
 {
   "houses" : [ {
-    "id" : 1,
-    "name" : "Stark"
+    "houseId" : {
+      "id" : 1
+    },
+    "name" : "Stark",
+    "description" : "They are the ruler of the north or in other words the main house of the north. They rule from the Castle of Winterfell."
   }, {
-    "id" : 2,
-    "name" : "Lannister"
+    "houseId" : {
+      "id" : 2
+    },
+    "name" : "Lannister",
+    "description" : "They are the warden of the west or the main house of the west. The rule from the Casterly Rock of the Westerlands."
   }, {
-    "id" : 3,
-    "name" : "Baratheon"
+    "houseId" : {
+      "id" : 3
+    },
+    "name" : "Baratheon",
+    "description" : "Their dynasty starts after Robert Baratheon defeated The Mad King."
   }, {
-    "id" : 4,
-    "name" : "Targaryen"
+    "houseId" : {
+      "id" : 4
+    },
+    "name" : "Targaryen",
+    "description" : "They ruled the seven kingdoms for 300 years with the help of their Dragons. But during the rule of the Mad King Aerys they lost their battle against Robert and Ned and lost their claim in the Iron Throne."
   }, {
-    "id" : 5,
-    "name" : "Greyjoy"
+    "houseId" : {
+      "id" : 5
+    },
+    "name" : "Greyjoy",
+    "description" : "They are the lords of Iron Islands rule from the Pyke in the Iron Islands."
   }, {
-    "id" : 6,
-    "name" : "Arryn"
+    "houseId" : {
+      "id" : 6
+    },
+    "name" : "Arryn",
+    "description" : "They are the main House of the Vale and rule form a small castle called the Eyrie in the mountain."
   }, {
-    "id" : 7,
-    "name" : "Martell"
+    "houseId" : {
+      "id" : 7
+    },
+    "name" : "Martell",
+    "description" : "They are the ruler of the Dorne , rule from the Sunspear Castle ."
   }, {
-    "id" : 8,
-    "name" : "Tully"
+    "houseId" : {
+      "id" : 8
+    },
+    "name" : "Tully",
+    "description" : "House Tully rule from Riverrun in the Riverlands. Ned Strak’s wife Cathlyn is the daughter of this house."
   }, {
-    "id" : 9,
-    "name" : "Tyrell"
+    "houseId" : {
+      "id" : 9
+    },
+    "name" : "Tyrell",
+    "description" : "Targaryens made the Tyrells Lords of Highgardens . They are the main house in the Reach and rule from Highgarden."
   } ]
 }
 ```
@@ -79,10 +106,11 @@ House by name. (**one of**: `stark`, `lannister`, `baratheon`, `Targaryen`, `Gre
 
 ```json
 {
-  "stark" : {
-    "id" : 1,
-    "name" : "Stark"
-  }
+  "houseId" : {
+    "id" : 1
+  },
+  "name" : "Stark",
+  "description" : "They are the ruler of the north or in other words the main house of the north. They rule from the Castle of Winterfell."
 }
 ```
 
@@ -92,10 +120,11 @@ House by id. (**an int in**: `[1..9]`)
 ### Response
 ```json
 {
-  "1" : {
-    "id" : 1,
-    "name" : "Stark"
-  }
+  "houseId" : {
+    "id" : 1
+  },
+  "name" : "Stark",
+  "description" : "They are the ruler of the north or in other words the main house of the north. They rule from the Castle of Winterfell."
 }
 ```
 

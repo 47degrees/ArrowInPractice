@@ -22,10 +22,10 @@ fun Routing.houseDetailsEndpoint(housesDB: HousesDatabase) {
       try {
         val houseId = param.toLong().houseId()
         val maybeHouse = housesDB[houseId]
-        maybeHouse?.let { house -> call.respond(mapOf(houseId to house)) } ?: throw NotFoundException()
+        maybeHouse?.let { house -> call.respond(house) } ?: throw NotFoundException()
       } catch (e: NumberFormatException) { // then param is not a long, so we assume it's a house name.
         val maybeHouse = housesDB[param]
-        maybeHouse?.let { house -> call.respond(mapOf(param to house)) } ?: throw NotFoundException()
+        maybeHouse?.let { house -> call.respond(house) } ?: throw NotFoundException()
       }
     }
   }
