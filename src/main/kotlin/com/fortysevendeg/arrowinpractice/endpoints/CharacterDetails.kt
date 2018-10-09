@@ -23,7 +23,7 @@ fun Routing.characterDetailsEndpoint(charactersDB: CharactersDatabase) {
       try {
         val characterId = param.toLong().characterId()
         val maybeCharacter = charactersDB.getById(characterId)
-        maybeCharacter?.let { character -> call.respond(mapOf(characterId to character)) } ?: throw NotFoundException()
+        maybeCharacter?.let { character -> call.respond(character) } ?: throw NotFoundException()
       } catch (e: NumberFormatException) {
         throw InvalidIdException()
       }
