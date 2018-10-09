@@ -14,9 +14,11 @@ class WelcomeEndpointTest {
   fun `should welcome the user`() = withTestApplication(Application::setupModule) {
     with(handleRequest(HttpMethod.Get, "/")) {
       assertEquals(HttpStatusCode.OK, response.status())
-      assertEquals("{\n" +
-          "  \"message\" : \"Welcome to the Game of Thrones API!\"\n" +
-          "}",
+      assertEquals("""
+        {
+          "message" : "Welcome to the Game of Thrones API!"
+        }
+      """.trimIndent(),
         response.content)
     }
   }
