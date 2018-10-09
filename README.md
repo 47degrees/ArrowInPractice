@@ -431,7 +431,7 @@ Overall list of castles.
 ```
 
 ## [GET] [http://0.0.0.0:8080/castles/{id}](http://0.0.0.0:8080/castles/1)
-Castle details by Id. `id` must be an **int** in the range `[1..8]`.
+Castle details by Id. `id` must be an **int** in the range `[1..12]`.
 
 ### Response
 
