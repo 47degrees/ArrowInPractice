@@ -36,16 +36,23 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 
 fun main(args: Array<String>) {
+  embeddedServer(
+    factory = Netty,
+    watchPaths = listOf("arrowinpractice"),
+    port = 8080,
+    module = Application::setupModule
+  ).apply { start(wait = true) }
+}
+
+fun Application.setupModule() {
   val housesDB = HousesDatabase()
   val charactersDB = CharactersDatabase()
   val castlesDB = CastlesDatabase()
 
-  embeddedServer(Netty, 8080) {
-    setupAuthentication()
-    setupContentNegotiation()
-    setupStatusCodes()
-    setupRoutes(housesDB, charactersDB, castlesDB)
-  }.start(wait = true)
+  setupAuthentication()
+  setupContentNegotiation()
+  setupStatusCodes()
+  setupRoutes(housesDB, charactersDB, castlesDB)
 }
 
 private fun Application.setupAuthentication() {
