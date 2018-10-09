@@ -28,18 +28,10 @@ class CastlesDatabase {
   fun getAll(): List<Castle> = castles
 
   @Synchronized
-  fun getByName(castleName: String): Castle? = castles.find { it.name.toLowerCase() == castleName.toLowerCase() }
-
-  @Synchronized
   fun getById(id: CastleId): Castle? = castles.find { it.castleId == id }
 
   /**
    * Enabling indexed access operator for fetching by castleId, as in castlesDB[8].
    */
   operator fun get(id: CastleId): Castle? = getById(id)
-
-  /**
-   * Enabling indexed access operator for fetching by name, as in castlesDB["Castle Black"].
-   */
-  operator fun get(castleName: String): Castle? = getByName(castleName)
 }
