@@ -94,4 +94,23 @@ class HousesEndpointsTests {
         response.content)
     }
   }
+
+  @Test
+  fun `should return house details by name`() = withTestApplication(Application::setupModule) {
+    with(authorizedRequest(HttpMethod.Get, "/houses/stark")) {
+      assertEquals(HttpStatusCode.OK, response.status())
+      assertEquals("""
+        {
+          "stark" : {
+            "houseId" : {
+              "id" : 1
+            },
+            "name" : "Stark",
+            "description" : "They are the ruler of the north or in other words the main house of the north. They rule from the Castle of Winterfell."
+          }
+        }
+        """.trimIndent(),
+        response.content)
+    }
+  }
 }
