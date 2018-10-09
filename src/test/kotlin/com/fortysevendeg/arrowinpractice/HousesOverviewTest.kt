@@ -14,7 +14,10 @@ class HousesOverviewTest {
   fun testRequests() = withTestApplication(Application::setupModule) {
     with(handleRequest(HttpMethod.Get, "/")) {
       assertEquals(HttpStatusCode.OK, response.status())
-      assertEquals("Hello from Ktor Testable sample application", response.content)
+      assertEquals("{\n" +
+          "  \"message\" : \"Welcome to the Game of Thrones API!\"\n" +
+          "}",
+        response.content)
     }
   }
 }
