@@ -507,6 +507,263 @@ it will get updated with the new details.
 }
 ```
 
+## [GET] [http://0.0.0.0:8080/got](http://0.0.0.0:8080/got)
+Overall combined endpoint. It's like a complete wiki, since it returns all the info available in the DB: All the houses, 
+including all their characters per house, which include the castle they have a seat in.
+
+### Response
+
+```json
+
+{
+  "houses": [
+    {
+      "houseId": {
+        "id": 1
+      },
+      "name": "Stark",
+      "description": "They are the ruler of the north or in other words the main house of the north. They rule from the Castle of Winterfell.",
+      "characters": [
+        {
+          "id": {
+            "id": 1
+          },
+          "name": "Eddard (Ned) Stark",
+          "description": "Patriarch, Lord of Winterfell, Warden of the North",
+          "castle": {
+            "castleId": {
+              "castleId": 4
+            },
+            "name": "Winterfell",
+            "description": "Winterfell is the seat of the ruler of the North and the ancestral home of House Stark. It is a very large castle located at the center of the North, from where the head of House Stark rules over his or her people. A small Godswood is enclosed within the walls. It is the regional capital of the North under Jon Snow The castle is located alongside the Kingsroad as it makes its way from the Wall to the capital of the Seven Kingdoms, King's Landing, more than a thousand miles to the south."
+          }
+        },
+        {
+          "id": {
+            "id": 2
+          },
+          "name": "Catelyn Stark",
+          "description": "Ned’s wife",
+          "castle": {
+            "castleId": {
+              "castleId": 4
+            },
+            "name": "Winterfell",
+            "description": "Winterfell is the seat of the ruler of the North and the ancestral home of House Stark. It is a very large castle located at the center of the North, from where the head of House Stark rules over his or her people. A small Godswood is enclosed within the walls. It is the regional capital of the North under Jon Snow The castle is located alongside the Kingsroad as it makes its way from the Wall to the capital of the Seven Kingdoms, King's Landing, more than a thousand miles to the south."
+          }
+        },
+        {
+          "id": {
+            "id": 3
+          },
+          "name": "Robb Stark",
+          "description": "Ned and Catelyn’s oldest son, heir to Winterfell",
+          "castle": {
+            "castleId": {
+              "castleId": 4
+            },
+            "name": "Winterfell",
+            "description": "Winterfell is the seat of the ruler of the North and the ancestral home of House Stark. It is a very large castle located at the center of the North, from where the head of House Stark rules over his or her people. A small Godswood is enclosed within the walls. It is the regional capital of the North under Jon Snow The castle is located alongside the Kingsroad as it makes its way from the Wall to the capital of the Seven Kingdoms, King's Landing, more than a thousand miles to the south."
+          }
+        },
+        {
+          "id": {
+            "id": 4
+          },
+          "name": "Sansa Stark",
+          "description": "Ned and Catelyn’s oldest daughter, betrothed to King Joffrey Baratheon",
+          "castle": {
+            "castleId": {
+              "castleId": 4
+            },
+            "name": "Winterfell",
+            "description": "Winterfell is the seat of the ruler of the North and the ancestral home of House Stark. It is a very large castle located at the center of the North, from where the head of House Stark rules over his or her people. A small Godswood is enclosed within the walls. It is the regional capital of the North under Jon Snow The castle is located alongside the Kingsroad as it makes its way from the Wall to the capital of the Seven Kingdoms, King's Landing, more than a thousand miles to the south."
+          }
+        },
+        {
+          "id": {
+            "id": 5
+          },
+          "name": "Arya Stark",
+          "description": "Catelyn’s youngest daughter",
+          "castle": {
+            "castleId": {
+              "castleId": 4
+            },
+            "name": "Winterfell",
+            "description": "Winterfell is the seat of the ruler of the North and the ancestral home of House Stark. It is a very large castle located at the center of the North, from where the head of House Stark rules over his or her people. A small Godswood is enclosed within the walls. It is the regional capital of the North under Jon Snow The castle is located alongside the Kingsroad as it makes its way from the Wall to the capital of the Seven Kingdoms, King's Landing, more than a thousand miles to the south."
+          }
+        },
+        {
+          "id": {
+            "id": 6
+          },
+          "name": "Bran Stark",
+          "description": "Ned and Catelyn’s middle son",
+          "castle": {
+            "castleId": {
+              "castleId": 4
+            },
+            "name": "Winterfell",
+            "description": "Winterfell is the seat of the ruler of the North and the ancestral home of House Stark. It is a very large castle located at the center of the North, from where the head of House Stark rules over his or her people. A small Godswood is enclosed within the walls. It is the regional capital of the North under Jon Snow The castle is located alongside the Kingsroad as it makes its way from the Wall to the capital of the Seven Kingdoms, King's Landing, more than a thousand miles to the south."
+          }
+        },
+        {
+          "id": {
+            "id": 7
+          },
+          "name": "Rickon Stark",
+          "description": "Ned and Catelyn’s youngest son",
+          "castle": {
+            "castleId": {
+              "castleId": 4
+            },
+            "name": "Winterfell",
+            "description": "Winterfell is the seat of the ruler of the North and the ancestral home of House Stark. It is a very large castle located at the center of the North, from where the head of House Stark rules over his or her people. A small Godswood is enclosed within the walls. It is the regional capital of the North under Jon Snow The castle is located alongside the Kingsroad as it makes its way from the Wall to the capital of the Seven Kingdoms, King's Landing, more than a thousand miles to the south."
+          }
+        },
+        {
+          "id": {
+            "id": 8
+          },
+          "name": "Jon Snow",
+          "description": "Ned’s illegitimate son, member of the Night’s Watch",
+          "castle": {
+            "castleId": {
+              "castleId": 4
+            },
+            "name": "Winterfell",
+            "description": "Winterfell is the seat of the ruler of the North and the ancestral home of House Stark. It is a very large castle located at the center of the North, from where the head of House Stark rules over his or her people. A small Godswood is enclosed within the walls. It is the regional capital of the North under Jon Snow The castle is located alongside the Kingsroad as it makes its way from the Wall to the capital of the Seven Kingdoms, King's Landing, more than a thousand miles to the south."
+          }
+        },
+        {
+          "id": {
+            "id": 9
+          },
+          "name": "Benjen Stark",
+          "description": "Ned’s younger brother, First Ranger of the Night’s Watch",
+          "castle": {
+            "castleId": {
+              "castleId": 8
+            },
+            "name": "Castle Black",
+            "description": "Castle Black is the primary headquarters and redoubt of the Night's Watch. It is located roughly halfway along the length of the Wall on its southern side, at the northern end of the Kingsroad. It is a dark and chilling home to its garrison."
+          }
+        }
+      ]
+    },
+    {
+      "houseId": {
+        "id": 2
+      },
+      "name": "Lannister",
+      "description": "They are the warden of the west or the main house of the west. The rule from the Casterly Rock of the Westerlands.",
+      "characters": [
+        {
+          "id": {
+            "id": 10
+          },
+          "name": "Tywin Lannister",
+          "description": "Patriarch, Lord of Casterly Rock, Warden of the West",
+          "castle": {
+            "castleId": {
+              "castleId": 6
+            },
+            "name": "Red Keep",
+            "description": "The Red Keep, previously known as Aegonfort, is the residence of the King of the Andals and the First Men, his family and his court, located within King's Landing, the capital of the Seven Kingdoms. It dominates the skyline of the city, and serves as the city's primary fortress and redoubt."
+          }
+        },
+        {
+          "id": {
+            "id": 11
+          },
+          "name": "Cersei Lannister",
+          "description": "Tywin’s daughter, Queen of the Seven Kingdoms, Jaime’s twin sister",
+          "castle": {
+            "castleId": {
+              "castleId": 6
+            },
+            "name": "Red Keep",
+            "description": "The Red Keep, previously known as Aegonfort, is the residence of the King of the Andals and the First Men, his family and his court, located within King's Landing, the capital of the Seven Kingdoms. It dominates the skyline of the city, and serves as the city's primary fortress and redoubt."
+          }
+        },
+        {
+          "id": {
+            "id": 12
+          },
+          "name": "Jaime Lannister",
+          "description": "Tywin’s oldest son, Joffrey’s biological father, member of the Kingsguard",
+          "castle": {
+            "castleId": {
+              "castleId": 6
+            },
+            "name": "Red Keep",
+            "description": "The Red Keep, previously known as Aegonfort, is the residence of the King of the Andals and the First Men, his family and his court, located within King's Landing, the capital of the Seven Kingdoms. It dominates the skyline of the city, and serves as the city's primary fortress and redoubt."
+          }
+        },
+        {
+          "id": {
+            "id": 13
+          },
+          "name": "Tyrion Lannister",
+          "description": "Tywin’s youngest son, acting Hand of the King and Master of Coin",
+          "castle": {
+            "castleId": {
+              "castleId": 6
+            },
+            "name": "Red Keep",
+            "description": "The Red Keep, previously known as Aegonfort, is the residence of the King of the Andals and the First Men, his family and his court, located within King's Landing, the capital of the Seven Kingdoms. It dominates the skyline of the city, and serves as the city's primary fortress and redoubt."
+          }
+        },
+        {
+          "id": {
+            "id": 14
+          },
+          "name": "Joffrey Baratheon",
+          "description": "Cersei’s eldest son, thought to be King Robert’s son, but is really Jaime’s son",
+          "castle": {
+            "castleId": {
+              "castleId": 6
+            },
+            "name": "Red Keep",
+            "description": "The Red Keep, previously known as Aegonfort, is the residence of the King of the Andals and the First Men, his family and his court, located within King's Landing, the capital of the Seven Kingdoms. It dominates the skyline of the city, and serves as the city's primary fortress and redoubt."
+          }
+        },
+        {
+          "id": {
+            "id": 15
+          },
+          "name": "Myrcella Baratheon",
+          "description": "Cersei’s eldest daughter, thought to be King Robert’s daughter, but is really Jaime’s daughter",
+          "castle": {
+            "castleId": {
+              "castleId": 6
+            },
+            "name": "Red Keep",
+            "description": "The Red Keep, previously known as Aegonfort, is the residence of the King of the Andals and the First Men, his family and his court, located within King's Landing, the capital of the Seven Kingdoms. It dominates the skyline of the city, and serves as the city's primary fortress and redoubt."
+          }
+        },
+        {
+          "id": {
+            "id": 16
+          },
+          "name": "Tommen Baratheon",
+          "description": "Cersei’s youngest son, thought to be King Robert’s son, but is really Jaime’s son",
+          "castle": {
+            "castleId": {
+              "castleId": 6
+            },
+            "name": "Red Keep",
+            "description": "The Red Keep, previously known as Aegonfort, is the residence of the King of the Andals and the First Men, his family and his court, located within King's Landing, the capital of the Seven Kingdoms. It dominates the skyline of the city, and serves as the city's primary fortress and redoubt."
+          }
+        }
+      ]
+    }
+    // more houses...
+  ]
+}
+```
+
 # Testing / Running the endpoints
 
 ## Http Request Built-in support
