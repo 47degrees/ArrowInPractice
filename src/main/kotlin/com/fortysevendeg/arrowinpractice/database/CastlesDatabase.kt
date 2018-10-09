@@ -8,7 +8,7 @@ import java.util.*
 class CastlesDatabase {
 
   /**
-   * Just a bunch of them, we're missing some houses for sure! ¯\_(ツ)_/¯.
+   * Just a bunch of them, we're missing many castles here for sure! but ¯\_(ツ)_/¯.
    *
    * All collections are intentionally mutable since they mimic what a database would be. We need to be able to insert
    * (store) new elements at any level.
