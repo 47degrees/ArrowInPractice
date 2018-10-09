@@ -1,8 +1,11 @@
 package com.fortysevendeg.arrowinpractice
 
 import io.ktor.application.Application
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
+import io.ktor.server.testing.setBody
 import io.ktor.server.testing.withTestApplication
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -96,6 +99,31 @@ class HousesEndpointsTests {
   @Test
   fun `should return house details by name`() = withTestApplication(Application::setupModule) {
     with(authorizedRequest(HttpMethod.Get, "/houses/stark")) {
+      assertEquals(HttpStatusCode.OK, response.status())
+      assertEquals("""
+        {
+          "houseId" : {
+            "id" : 1
+          },
+          "name" : "Stark",
+          "description" : "They are the ruler of the north or in other words the main house of the north. They rule from the Castle of Winterfell."
+        }
+        """.trimIndent(),
+        response.content)
+    }
+  }
+
+  @Test
+  fun `should add new house to the database on post`() = withTestApplication(Application::setupModule) {
+    with(authorizedRequest(HttpMethod.Post, "/houses") {
+      addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+      setBody("""
+        {
+          "name": "NewHouse",
+          "description": "Super interesting new house description. Oh wow."
+        }
+      """.trimIndent())
+    }) {
       assertEquals(HttpStatusCode.OK, response.status())
       assertEquals("""
         {
