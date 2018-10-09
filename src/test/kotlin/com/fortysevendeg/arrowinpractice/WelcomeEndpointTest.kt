@@ -8,10 +8,10 @@ import io.ktor.server.testing.withTestApplication
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class HousesOverviewTest {
+class WelcomeEndpointTest {
 
   @Test
-  fun testRequests() = withTestApplication(Application::setupModule) {
+  fun `should welcome the user`() = withTestApplication(Application::setupModule) {
     with(handleRequest(HttpMethod.Get, "/")) {
       assertEquals(HttpStatusCode.OK, response.status())
       assertEquals("{\n" +
