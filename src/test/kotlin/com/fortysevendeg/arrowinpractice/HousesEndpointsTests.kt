@@ -127,11 +127,7 @@ class HousesEndpointsTests {
       assertEquals(HttpStatusCode.OK, response.status())
       assertEquals("""
         {
-          "houseId" : {
-            "id" : 1
-          },
-          "name" : "Stark",
-          "description" : "They are the ruler of the north or in other words the main house of the north. They rule from the Castle of Winterfell."
+          "message" : "House created successfully."
         }
         """.trimIndent(),
         response.content)
