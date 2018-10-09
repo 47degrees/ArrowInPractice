@@ -13,6 +13,10 @@ import io.ktor.routing.get
  * GET: This basically dumps the whole DB in a json, so you get all the houses, including all their characters, which
  * at the same time include their respective castle seats.
  *
+ * For a flatMapping scenario, you'd get houses first, flatMap them to fetch characters by houseId, then flatMap those
+ * to get character castle by castleId, and therefore conform a combined response equivalent to the one we are manually
+ * composing here.
+ *
  * Authentication: Basic (user:password encoded in Base64).
  */
 fun Routing.gameOfThronesEndpoint(
