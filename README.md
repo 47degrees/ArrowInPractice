@@ -192,202 +192,459 @@ Overall list of characters.
 ```json
 {
   "characters" : [ {
-    "houseId" : 1,
-    "id" : 1,
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 1
+    },
+    "castleId" : {
+      "id" : 4
+    },
     "name" : "Eddard (Ned) Stark",
     "description" : "Patriarch, Lord of Winterfell, Warden of the North"
   }, {
-    "houseId" : 1,
-    "id" : 2,
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 2
+    },
+    "castleId" : {
+      "id" : 4
+    },
     "name" : "Catelyn Stark",
     "description" : "Ned’s wife"
   }, {
-    "houseId" : 1,
-    "id" : 3,
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 3
+    },
+    "castleId" : {
+      "id" : 4
+    },
     "name" : "Robb Stark",
     "description" : "Ned and Catelyn’s oldest son, heir to Winterfell"
   }, {
-    "houseId" : 1,
-    "id" : 4,
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 4
+    },
+    "castleId" : {
+      "id" : 4
+    },
     "name" : "Sansa Stark",
     "description" : "Ned and Catelyn’s oldest daughter, betrothed to King Joffrey Baratheon"
   }, {
-    "houseId" : 1,
-    "id" : 5,
-    "name" : "Arya Star",
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 5
+    },
+    "castleId" : {
+      "id" : 4
+    },
+    "name" : "Arya Stark",
     "description" : "Catelyn’s youngest daughter"
   }, {
-    "houseId" : 1,
-    "id" : 6,
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 6
+    },
+    "castleId" : {
+      "id" : 4
+    },
     "name" : "Bran Stark",
     "description" : "Ned and Catelyn’s middle son"
   }, {
-    "houseId" : 1,
-    "id" : 7,
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 7
+    },
+    "castleId" : {
+      "id" : 4
+    },
     "name" : "Rickon Stark",
     "description" : "Ned and Catelyn’s youngest son"
   }, {
-    "houseId" : 1,
-    "id" : 8,
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 8
+    },
+    "castleId" : {
+      "id" : 4
+    },
     "name" : "Jon Snow",
     "description" : "Ned’s illegitimate son, member of the Night’s Watch"
   }, {
-    "houseId" : 1,
-    "id" : 9,
+    "houseId" : {
+      "id" : 1
+    },
+    "characterId" : {
+      "id" : 9
+    },
+    "castleId" : {
+      "id" : 8
+    },
     "name" : "Benjen Stark",
     "description" : "Ned’s younger brother, First Ranger of the Night’s Watch"
   }, {
-    "houseId" : 2,
-    "id" : 10,
+    "houseId" : {
+      "id" : 2
+    },
+    "characterId" : {
+      "id" : 10
+    },
+    "castleId" : {
+      "id" : 6
+    },
     "name" : "Tywin Lannister",
     "description" : "Patriarch, Lord of Casterly Rock, Warden of the West"
   }, {
-    "houseId" : 2,
-    "id" : 11,
+    "houseId" : {
+      "id" : 2
+    },
+    "characterId" : {
+      "id" : 11
+    },
+    "castleId" : {
+      "id" : 6
+    },
     "name" : "Cersei Lannister",
     "description" : "Tywin’s daughter, Queen of the Seven Kingdoms, Jaime’s twin sister"
   }, {
-    "houseId" : 2,
-    "id" : 12,
+    "houseId" : {
+      "id" : 2
+    },
+    "characterId" : {
+      "id" : 12
+    },
+    "castleId" : {
+      "id" : 6
+    },
     "name" : "Jaime Lannister",
     "description" : "Tywin’s oldest son, Joffrey’s biological father, member of the Kingsguard"
   }, {
-    "houseId" : 2,
-    "id" : 13,
+    "houseId" : {
+      "id" : 2
+    },
+    "characterId" : {
+      "id" : 13
+    },
+    "castleId" : {
+      "id" : 6
+    },
     "name" : "Tyrion Lannister",
     "description" : "Tywin’s youngest son, acting Hand of the King and Master of Coin"
   }, {
-    "houseId" : 2,
-    "id" : 14,
+    "houseId" : {
+      "id" : 2
+    },
+    "characterId" : {
+      "id" : 14
+    },
+    "castleId" : {
+      "id" : 6
+    },
     "name" : "Joffrey Baratheon",
     "description" : "Cersei’s eldest son, thought to be King Robert’s son, but is really Jaime’s son"
   }, {
-    "houseId" : 2,
-    "id" : 15,
+    "houseId" : {
+      "id" : 2
+    },
+    "characterId" : {
+      "id" : 15
+    },
+    "castleId" : {
+      "id" : 6
+    },
     "name" : "Myrcella Baratheon",
     "description" : "Cersei’s eldest daughter, thought to be King Robert’s daughter, but is really Jaime’s daughter"
   }, {
-    "houseId" : 2,
-    "id" : 16,
+    "houseId" : {
+      "id" : 2
+    },
+    "characterId" : {
+      "id" : 16
+    },
+    "castleId" : {
+      "id" : 6
+    },
     "name" : "Tommen Baratheon",
     "description" : "Cersei’s youngest son, thought to be King Robert’s son, but is really Jaime’s son"
   }, {
-    "houseId" : 3,
-    "id" : 17,
+    "houseId" : {
+      "id" : 3
+    },
+    "characterId" : {
+      "id" : 17
+    },
+    "castleId" : {
+      "id" : 6
+    },
     "name" : "Robert Baratheon",
     "description" : "Patriarch, King of the Seven Kingdoms"
   }, {
-    "houseId" : 3,
-    "id" : 18,
+    "houseId" : {
+      "id" : 3
+    },
+    "characterId" : {
+      "id" : 18
+    },
+    "castleId" : {
+      "id" : 1
+    },
     "name" : "Stannis Baratheon",
     "description" : "Robert’s younger brother, Renley’s older brother, Lord of Dragonstone"
   }, {
-    "houseId" : 3,
-    "id" : 19,
+    "houseId" : {
+      "id" : 3
+    },
+    "characterId" : {
+      "id" : 19
+    },
+    "castleId" : {
+      "id" : 9
+    },
     "name" : "Renly Baratheon",
     "description" : "Youngest of the Baratheon brothers, Lord of Storm’s End"
   }, {
-    "houseId" : 4,
-    "id" : 20,
+    "houseId" : {
+      "id" : 4
+    },
+    "characterId" : {
+      "id" : 20
+    },
+    "castleId" : {
+      "id" : 1
+    },
     "name" : "Daenerys Targereyn",
     "description" : "Mother of Dragons, Khaleesi"
   }, {
-    "houseId" : 4,
-    "id" : 21,
+    "houseId" : {
+      "id" : 4
+    },
+    "characterId" : {
+      "id" : 21
+    },
+    "castleId" : {
+      "id" : 1
+    },
     "name" : "Viserys Targaryen",
     "description" : "Daenerys’s brother"
   }, {
-    "houseId" : 4,
-    "id" : 22,
+    "houseId" : {
+      "id" : 4
+    },
+    "characterId" : {
+      "id" : 22
+    },
+    "castleId" : {
+      "id" : 1
+    },
     "name" : "Aerys II Targaryen",
     "description" : "Daenerys’s father, former King of the Seven Kingdoms, deceased"
   }, {
-    "houseId" : 5,
-    "id" : 23,
+    "houseId" : {
+      "id" : 5
+    },
+    "characterId" : {
+      "id" : 23
+    },
+    "castleId" : {
+      "id" : 10
+    },
     "name" : "Balon Greyjoy",
     "description" : "Patriarch, Lord of the Iron Islands"
   }, {
-    "houseId" : 5,
-    "id" : 24,
+    "houseId" : {
+      "id" : 5
+    },
+    "characterId" : {
+      "id" : 24
+    },
+    "castleId" : {
+      "id" : 10
+    },
     "name" : "Theon Greyjoy",
     "description" : "Balon’s first-born son, heir apparent to the Iron Islands"
   }, {
-    "houseId" : 5,
-    "id" : 25,
+    "houseId" : {
+      "id" : 5
+    },
+    "characterId" : {
+      "id" : 25
+    },
+    "castleId" : {
+      "id" : 10
+    },
     "name" : "Yara Greyjoy",
     "description" : "Balon’s only daughter and oldest child"
   }, {
-    "houseId" : 6,
-    "id" : 26,
+    "houseId" : {
+      "id" : 6
+    },
+    "characterId" : {
+      "id" : 26
+    },
+    "castleId" : {
+      "id" : 5
+    },
     "name" : "Jon Arryn",
     "description" : "Patriarch, former Hand of the King, deceased"
   }, {
-    "houseId" : 6,
-    "id" : 27,
+    "houseId" : {
+      "id" : 6
+    },
+    "characterId" : {
+      "id" : 27
+    },
+    "castleId" : {
+      "id" : 5
+    },
     "name" : "Lysa Arryn",
     "description" : "Catelyn’s younger sister"
   }, {
-    "houseId" : 6,
-    "id" : 28,
-    "name" : "Robert Arry",
+    "houseId" : {
+      "id" : 6
+    },
+    "characterId" : {
+      "id" : 28
+    },
+    "castleId" : {
+      "id" : 5
+    },
+    "name" : "Robert Arryn",
     "description" : "Lysa’s son, Lord of the Eyrie"
   }, {
-    "houseId" : 7,
-    "id" : 29,
+    "houseId" : {
+      "id" : 7
+    },
+    "characterId" : {
+      "id" : 29
+    },
+    "castleId" : {
+      "id" : 11
+    },
     "name" : "Doran Martell",
     "description" : "Patriarch, Prince of Dorne"
   }, {
-    "houseId" : 7,
-    "id" : 30,
+    "houseId" : {
+      "id" : 7
+    },
+    "characterId" : {
+      "id" : 30
+    },
+    "castleId" : {
+      "id" : 11
+    },
     "name" : "Oberyn Martell",
     "description" : "Doran’s youngest brother"
   }, {
-    "houseId" : 8,
-    "id" : 31,
+    "houseId" : {
+      "id" : 8
+    },
+    "characterId" : {
+      "id" : 31
+    },
+    "castleId" : {
+      "id" : 7
+    },
     "name" : "Hoster Tully",
     "description" : "Patriarch, Lord of Riverrun, Catelyn and Lysa’s father"
   }, {
-    "houseId" : 8,
-    "id" : 32,
+    "houseId" : {
+      "id" : 8
+    },
+    "characterId" : {
+      "id" : 32
+    },
+    "castleId" : {
+      "id" : 7
+    },
     "name" : "Edmure Tully",
     "description" : "Hoster’s only son and heir to Riverrun"
   }, {
-    "houseId" : 9,
-    "id" : 33,
+    "houseId" : {
+      "id" : 9
+    },
+    "characterId" : {
+      "id" : 33
+    },
+    "castleId" : {
+      "id" : 12
+    },
     "name" : "Mace Tyrell",
     "description" : "Patriarch, Lord of Highgarden"
   }, {
-    "houseId" : 9,
-    "id" : 34,
+    "houseId" : {
+      "id" : 9
+    },
+    "characterId" : {
+      "id" : 34
+    },
+    "castleId" : {
+      "id" : 12
+    },
     "name" : "Olenna Tyrell",
     "description" : "Mace’s mother"
   }, {
-    "houseId" : 9,
-    "id" : 35,
+    "houseId" : {
+      "id" : 9
+    },
+    "characterId" : {
+      "id" : 35
+    },
+    "castleId" : {
+      "id" : 12
+    },
     "name" : "Margaery Tyrell",
     "description" : "Mace’s daughter, wife of Renly Baratheon"
   }, {
-    "houseId" : 9,
-    "id" : 36,
+    "houseId" : {
+      "id" : 9
+    },
+    "characterId" : {
+      "id" : 36
+    },
+    "castleId" : {
+      "id" : 12
+    },
     "name" : "Loras Tyrell",
     "description" : "Mace’s son, heir to House Tyrell"
   } ]
 }
 ```
 
-## [GET] [http://0.0.0.0:8080/characters/{id}](http://0.0.0.0:8080/characters/13)
+## [GET] [http://0.0.0.0:8080/characters/{id}](http://0.0.0.0:8080/characters/1)
 Character details by Id. `id` must be an **int** in the range `[1..36]`.
 
 ### Response
 
 ```json
 {
-  "13" : {
-    "houseId" : 2,
-    "id" : 13,
-    "name" : "Tyrion Lannister",
-    "description" : "Tywin’s youngest son, acting Hand of the King and Master of Coin"
-  }
+  "houseId" : {
+    "id" : 1
+  },
+  "characterId" : {
+    "id" : 1
+  },
+  "castleId" : {
+    "id" : 4
+  },
+  "name" : "Eddard (Ned) Stark",
+  "description" : "Patriarch, Lord of Winterfell, Warden of the North"
 }
 ```
 
