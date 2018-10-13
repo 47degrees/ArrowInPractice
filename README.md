@@ -33,8 +33,9 @@ forget to run the app so you get your local server deployed to localhost).
 
 ## Tests
 
-* There are Unit tests per endpoint covering all the required cases we're interested in. Run them like:
+There are also Unit tests per endpoint covering all the required cases we're interested in. So don't worry if you don't own a IntellIJ Idea Ultimate serial, since 
+we expect you to validate endpoints when you need using the unit tests. Run them like:
 ```
 ./gradlew test
 ``` 
-Or just by using the IDE tools (play icon to run tests on test class declarations or right click in test packages -> "run all tests in"...)
+You can also use the IDE tools (play icon to run tests on test class declarations or right click in test packages -> "run all tests in"...)
