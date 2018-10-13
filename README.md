@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/47deg/ArrowInPractice.svg?branch=master)](https://travis-ci.org/47deg/ArrowInPractice)
+
 # Arrow in practice
 
 Lambda.World Cádiz 2018 workshop hosted by [@raulraja](https://twitter.com/raulraja) and [@JorgeCastilloPR](https://twitter.com/JorgeCastilloPR).
