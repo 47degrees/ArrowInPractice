@@ -15,7 +15,7 @@ Some key points you'll learn:
 # Cheat Sheet
 
 There's a cheat sheet you can double check in case you need some easy peasy clues on how proceed with the Workshop. 
-<details><summary>Click here to reveal it.</summary>
+<details><summary>**Click here to reveal it!**</summary>
 * asd
 * qwe
 * rty
