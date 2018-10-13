@@ -775,7 +775,7 @@ Castle details by Id. `id` must be an **int** in the range `[1..12]`.
 }
 ```
 
-## [GET] [http://0.0.0.0:8080/jamielanniester/seats](http://0.0.0.0:8080/jamielanniester/seats)
+## [GET] [http://0.0.0.0:8080/jamielannister/seats](http://0.0.0.0:8080/jamielanniester/seats)
 
 This endpoint represent **independent computations**. It retrieves castle details from the DB using two different `CastleIds` 
 for the Castles where Jamie Lannister has a seat in. Afterwards, when both fetches are complete, it combines them into a single 

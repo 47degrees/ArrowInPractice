@@ -33,4 +33,30 @@ class GetCharacterDetailsTest {
         response.content)
     }
   }
+
+  @Test
+  fun `should return 404 NotFound for unknown Id`() = withTestApplication(Application::setupModule) {
+    with(authorizedRequest(HttpMethod.Get, "/characters/999")) {
+      assertEquals(HttpStatusCode.NotFound, response.status())
+      assertEquals("""
+        {
+          "error" : "Not found."
+        }
+        """.trimIndent(),
+        response.content)
+    }
+  }
+
+  @Test
+  fun `should return 400 BadRequest for data base exceptions`() = withTestApplication(Application::setupModule) {
+    with(authorizedRequest(HttpMethod.Get, "/characters/unexpected_param")) {
+      assertEquals(HttpStatusCode.BadRequest, response.status())
+      assertEquals("""
+        {
+          "error" : "Invalid Id format. It must be parsable to Long."
+        }
+        """.trimIndent(),
+        response.content)
+    }
+  }
 }

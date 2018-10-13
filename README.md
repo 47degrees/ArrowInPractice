@@ -12,21 +12,50 @@ Some key points you'll learn:
 * How to encode sequential operations with a fancier syntax using Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.
 
-# Cheat Sheet
+# Exercises
 
-There's a cheat sheet you can double check in case you need some easy peasy clues on how proceed with the Workshop. 
-<details><summary>CLICK HERE TO REVEAL THE CHEATS!</summary>
-<p>
-<ul>
-<li>All details endpoints are taking <b>nullables</b> now from the Database (they're optional), since the given Id could not exist.</li>
-<li>Any data base access is prone to throw exceptions, since it mimics a real DB access. That means we should <b>try</b> to cover that case. :wink:</li>
-<li>All the calls are being <b>validated</b> in terms of Authentication. That's something we can take care of with FP.</li>
-<li>The <a href="https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080jamielanniesterseats">jamielannister/seats</a> endpoint encodes two <b>independent computations</b> that require to combine results in the end. You probably know how to do that using FP.</li>
-<li>The <a href="https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080got">got</a> endpoint encodes three <b>sequential (dependent) computations</b> to compose a combined result in the end. You know what that means, right? :stuck_out_tongue:.
-<li>Every call is done asynchronously using Ktor framework behind the scenes. You should be able to translate that to <b>Async</b> constraints with Arrow.</li>
-</ul>
-</p>
-</details>
+## 1. Handling nullability
+
+All details endpoint implementations are taking **nullables** now from the Database (they're optional), since the given Id could not exist. You must 
+translate that concern to a FP related data type. Do it for the [GetCharacterDetails Endpoint])(https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid).
+
+To double check your changes, run `GetCharacterDetailsTest.kt` suite. You've got tests for both scenarios there (found and not found). They should keep passing. 
+
+## 2. Handling exceptions
+
+Any data base access is prone to throw exceptions, since it mimics a real DB access. That means we should <b>try</b> to cover that case. :wink: 
+
+Staying on the same endpoint, you'll see how it's implementation (`CharacterDetails.kt`) uses `try catch` block to catch all possible database exceptions and return an `InvalidIdException` in that case, which translates to an HTTP `BadRequest` error response.
+Again, run  `GetCharacterDetailsTest.kt` suite to validate your changes are correct. There's a test covering this case. Response should not vary and tests should keep passing.
+
+## 3. Handling authentication
+
+All endpoints (except the welcome one) are authenticated using `Basic` auth. The auth credentials are the following string encoded in Base64:
+```
+Basic jorgerrmartin:lambdaworldrules
+```
+
+This is a validation and there's a data type for that type of error control in Arrow. Please switch the implementation to it for the same endpoint ([GetCharacterDetails Endpoint])(https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid)).
+
+## 4. Independent computations
+
+There's an endpoint called [/jammielannister/seats](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080jammielannisterseats) that 
+encodes two **independent computations** that require to combine results in the end. You probably know how to do that using FP.
+
+To validate this one, you can go to the `GetJamieLannisterSeatsTest` suite and run it.
+
+## 5. Dependent (sequential) computations
+
+There's an endpoint called [got](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080got) that encodes 
+three **sequential (dependent) computations** to compose a combined result in the end. You know what that means, right? :stuck_out_tongue:
+
+To validate this one, go to `GetGotTest.kt` and run the suite.
+
+## 6. Async computations
+
+Every call is done asynchronously using Ktor framework behind the scenes. You should be able to translate that to <b>Async</b> constraints with Arrow.
+
+Please, iterate `CharacterDetails.kt` one more time to achieve asynchrony without relying on the Ktor framework as is.
 
 # Serialization
 
