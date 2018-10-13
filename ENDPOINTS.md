@@ -775,9 +775,37 @@ Castle details by Id. `id` must be an **int** in the range `[1..12]`.
 }
 ```
 
+## [GET] [http://0.0.0.0:8080/jamielanniester/seats](http://0.0.0.0:8080/jamielanniester/seats)
+
+This endpoint represent **independent computations**. It retrieves castle details from the DB using two different `CastleIds` 
+for the Castles where Jamie Lannister has a seat in. Afterwards, when both fetches are complete, it combines them into a single 
+result (a `List<Castle>`).
+
+### Response
+
+```json
+[ {
+  "castleId" : {
+    "id" : 3
+  },
+  "name" : "Casterly Rock",
+  "description" : "Casterly Rock is the ancestral stronghold of House Lannister. It is located on the Western coast of Westeros on a rocky promontory overlooking the Sunset Sea. It overlooks the major city of Lannisport. A major goldmine is located under Casterly Rock. It is one of the most productive in the realm and provides House Lannister with their wealth."
+}, {
+  "castleId" : {
+    "id" : 6
+  },
+  "name" : "Red Keep",
+  "description" : "The Red Keep, previously known as Aegonfort, is the residence of the King of the Andals and the First Men, his family and his court, located within King's Landing, the capital of the Seven Kingdoms. It dominates the skyline of the city, and serves as the city's primary fortress and redoubt."
+} ]
+```
+
 ## [GET] [http://0.0.0.0:8080/got](http://0.0.0.0:8080/got)
 Overall combined endpoint. It's like a complete wiki, since it returns all the info available in the DB: All the houses, 
 including all their characters per house, which include the castle they have a seat in.
+
+This endpoint represents **sequential computation**, since it needs to fetch from Houses endpoint, then use the result to 
+fetch characters per `HouseId`, and then use the result of that one to fetch Castles per `CastleId` (included on each 
+character).
 
 ### Response
 
