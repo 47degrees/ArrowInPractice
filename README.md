@@ -16,11 +16,15 @@ Some key points you'll learn:
 
 There's a cheat sheet you can double check in case you need some easy peasy clues on how proceed with the Workshop. 
 <details><summary>CLICK HERE TO REVEAL THE CHEATS!</summary>
+<p>
 <ul>
-<li>asd</li>
-<li>asd</li>
-<li>asd</li>
+<li>All details endpoints are returning nullables now (they're optional), since the given Id could not correspond to any item available.</li>
+<li>Any data base access is prone to throw exceptions, since it mimics a real DB access. That means we should **try** to cover that case. :wink:</li>
+<li>All the calls are being **validated** in terms of Authentication. That's something we can take care of with FP.</li>
+<li>The [jamielannister/seats](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080jamielanniesterseats) endpoint encodes two independent computations that require to combine results in the end. You probably know how to do that using FP.</li>
+<li>The [got](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080got) endpoint encodes three sequential (dependant) computations to compose a combined result in the end. You know what that means, right? :stuck_out_tongue:.
 </ul>
+</p>
 </details>
 
 # Serialization
