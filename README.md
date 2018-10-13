@@ -17,45 +17,46 @@ Some key points you'll learn:
 ## 1. Handling nullability
 
 All details endpoint implementations are taking **nullables** now from the Database (they're optional), since the given Id could not exist. You must 
-translate that concern to a FP related data type. Do it for the [GetCharacterDetails Endpoint])(https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid).
+translate that concern to a FP related data type. Do it for the [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid).
 
-To double check your changes, run `GetCharacterDetailsTest.kt` suite. You've got tests for both scenarios there (found and not found). They should keep passing. 
+To double check your changes, run [GetCharacterDetailsTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/GetCharacterDetailsTest.kt) suite. You've got tests for both scenarios there (found and not found). They should keep passing. 
 
 ## 2. Handling exceptions
 
 Any data base access is prone to throw exceptions, since it mimics a real DB access. That means we should <b>try</b> to cover that case. :wink: 
 
-Staying on the same endpoint, you'll see how it's implementation (`CharacterDetails.kt`) uses `try catch` block to catch all possible database exceptions and return an `InvalidIdException` in that case, which translates to an HTTP `BadRequest` error response.
-Again, run  `GetCharacterDetailsTest.kt` suite to validate your changes are correct. There's a test covering this case. Response should not vary and tests should keep passing.
+Staying on the same endpoint, you'll see how it's implementation ([GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid)) uses `try catch` imperative style block to catch all possible database / parsing exceptions and return an `InvalidIdException` in that case, which translates to an HTTP `BadRequest` error response.
+
+Again, run  [GetCharacterDetailsTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/GetCharacterDetailsTest.kt) suite to validate your changes are correct. There's a test covering this case. Response should not vary and tests should keep passing.
 
 ## 3. Handling authentication
 
 All endpoints (except the welcome one) are authenticated using `Basic` auth. The auth credentials are the following string encoded in Base64:
 ```
-Basic jorgerrmartin:lambdaworldrules
+Basic georgerrmartin:lambdaworldrules
 ```
 
-This is a validation and there's a data type for that type of error control in Arrow. Please switch the implementation to it for the same endpoint ([GetCharacterDetails Endpoint])(https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid)).
+This is a validation and there's a data type for that type of error control in Arrow. Please switch the implementation to it for the [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid)).
 
 ## 4. Independent computations
 
-There's an endpoint called [/jammielannister/seats](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080jammielannisterseats) that 
+There's an endpoint called [/jammielannister/seats](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080jamielannisterseats) that 
 encodes two **independent computations** that require to combine results in the end. You probably know how to do that using FP.
 
-To validate this one, you can go to the `GetJamieLannisterSeatsTest` suite and run it.
+To validate this one, you can go to the [GetJamieLannisterSeatsTest](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/castles/GetJamieLannisterSeatsTest.kt) suite and run it.
 
 ## 5. Dependent (sequential) computations
 
 There's an endpoint called [got](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080got) that encodes 
 three **sequential (dependent) computations** to compose a combined result in the end. You know what that means, right? :stuck_out_tongue:
 
-To validate this one, go to `GetGotTest.kt` and run the suite.
+To validate this one, go to [GetGotTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/got/GetGotTest.kt) and run the suite.
 
 ## 6. Async computations
 
 Every call is done asynchronously using Ktor framework behind the scenes. You should be able to translate that to <b>Async</b> constraints with Arrow.
 
-Please, iterate `CharacterDetails.kt` one more time to achieve asynchrony without relying on the Ktor framework as is.
+Please, iterate [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid) one more time to achieve asynchrony without relying on the Ktor framework as is.
 
 # Serialization
 
