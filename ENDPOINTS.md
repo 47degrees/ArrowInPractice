@@ -166,6 +166,36 @@ Characters per house Id. (`id` must be **an int in the range**: `[1..9]`)
 }
 ```
 
+## [POST] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
+
+Create a new House or update an existent one. If there's already a House with the same name than the one posted, it will 
+get updated with the new details.
+
+### Request Payload
+
+```json
+{
+  "name" : "NewHouse",
+  "description" : "Some random description"
+}
+```
+
+### Response
+
+**Created**:
+```json
+{
+  "message": "House created successfully."
+}
+```
+
+**Updated**: (Found a house with the same name)
+```json
+{
+  "message": "A House with the same name was found and updated successfully."
+}
+```
+
 ## [GET] [http://0.0.0.0:8080/characters](http://0.0.0.0:8080/characters)
 Overall list of characters.
 
@@ -630,6 +660,36 @@ Character details by Id. `id` must be an **int** in the range `[1..36]`.
 }
 ```
 
+## [POST] [http://0.0.0.0:8080/characters](http://0.0.0.0:8080/characters)
+
+Create a new Character or update an existent one. If there's already a Character with the same name than the one posted, 
+it will get updated with the new details.
+
+### Request Payload
+
+```json
+{
+  "name" : "NewCharacter",
+  "description" : "Some random description"
+}
+```
+
+### Response
+
+**Created**:
+```json
+{
+  "message": "Character created successfully."
+}
+```
+
+**Updated**: (Found a Character with the same name)
+```json
+{
+  "message": "A Character with the same name was found and updated successfully."
+}
+```
+
 ## [GET] [http://0.0.0.0:8080/castles](http://0.0.0.0:8080/castles)
 Overall list of castles.
 
@@ -712,66 +772,6 @@ Castle details by Id. `id` must be an **int** in the range `[1..12]`.
     "name": "Dragonstone",
     "description": "Dragonstone is the castle that stands upon the eponymous island located in Blackwater Bay. It is the ancestral seat of House Targaryen and was the stronghold of a cadet branch of House Baratheon."
   }
-}
-```
-
-## [POST] [http://0.0.0.0:8080/houses](http://0.0.0.0:8080/houses)
-
-Create a new House or update an existent one. If there's already a House with the same name than the one posted, it will 
-get updated with the new details.
-
-### Request Payload
-
-```json
-{
-  "name" : "NewHouse",
-  "description" : "Some random description"
-}
-```
-
-### Response
-
-**Created**:
-```json
-{
-  "message": "House created successfully."
-}
-```
-
-**Updated**: (Found a house with the same name)
-```json
-{
-  "message": "A House with the same name was found and updated successfully."
-}
-```
-
-## [POST] [http://0.0.0.0:8080/characters](http://0.0.0.0:8080/characters)
-
-Create a new Character or update an existent one. If there's already a Character with the same name than the one posted, 
-it will get updated with the new details.
-
-### Request Payload
-
-```json
-{
-  "name" : "NewCharacter",
-  "description" : "Some random description"
-}
-```
-
-### Response
-
-**Created**:
-```json
-{
-  "message": "Character created successfully."
-}
-```
-
-**Updated**: (Found a Character with the same name)
-```json
-{
-  "message": "A Character with the same name was found and updated successfully."
 }
 ```
 
