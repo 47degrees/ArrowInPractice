@@ -1,16 +1,15 @@
-package com.fortysevendeg.arrowinpractice
+package com.fortysevendeg.arrowinpractice.characters
 
+import com.fortysevendeg.arrowinpractice.authorizedRequest
+import com.fortysevendeg.arrowinpractice.setupModule
 import io.ktor.application.Application
-import io.ktor.http.ContentType
-import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
-import io.ktor.server.testing.setBody
 import io.ktor.server.testing.withTestApplication
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class CharacterEndpointsTests {
+class GetCharactersOverviewTest {
 
   @Test
   fun `should return expected characters overview`() = withTestApplication(Application::setupModule) {
@@ -451,98 +450,6 @@ class CharacterEndpointsTests {
             "name" : "Loras Tyrell",
             "description" : "Mace’s son, heir to House Tyrell"
           } ]
-        }
-        """.trimIndent(),
-        response.content)
-    }
-  }
-
-  @Test
-  fun `should return expected characters per house Id`() = withTestApplication(Application::setupModule) {
-    with(authorizedRequest(HttpMethod.Get, "/houses/4/characters")) {
-      assertEquals(HttpStatusCode.OK, response.status())
-      assertEquals("""
-        [ {
-          "houseId" : {
-            "id" : 4
-          },
-          "characterId" : {
-            "id" : 20
-          },
-          "castleId" : {
-            "id" : 1
-          },
-          "name" : "Daenerys Targereyn",
-          "description" : "Mother of Dragons, Khaleesi"
-        }, {
-          "houseId" : {
-            "id" : 4
-          },
-          "characterId" : {
-            "id" : 21
-          },
-          "castleId" : {
-            "id" : 1
-          },
-          "name" : "Viserys Targaryen",
-          "description" : "Daenerys’s brother"
-        }, {
-          "houseId" : {
-            "id" : 4
-          },
-          "characterId" : {
-            "id" : 22
-          },
-          "castleId" : {
-            "id" : 1
-          },
-          "name" : "Aerys II Targaryen",
-          "description" : "Daenerys’s father, former King of the Seven Kingdoms, deceased"
-        } ]
-        """.trimIndent(),
-        response.content)
-    }
-  }
-
-  @Test
-  fun `should return character details by Id`() = withTestApplication(Application::setupModule) {
-    with(authorizedRequest(HttpMethod.Get, "/characters/1")) {
-      assertEquals(HttpStatusCode.OK, response.status())
-      assertEquals("""
-        {
-          "houseId" : {
-            "id" : 1
-          },
-          "characterId" : {
-            "id" : 1
-          },
-          "castleId" : {
-            "id" : 4
-          },
-          "name" : "Eddard (Ned) Stark",
-          "description" : "Patriarch, Lord of Winterfell, Warden of the North"
-        }
-        """.trimIndent(),
-        response.content)
-    }
-  }
-
-  @Test
-  fun `should add new character to the database on post`() = withTestApplication(Application::setupModule) {
-    with(authorizedRequest(HttpMethod.Post, "/characters") {
-      addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
-      setBody("""
-        {
-          "houseId" : "1",
-          "name": "New Stark Character",
-          "description": "Super interesting new character for the Starks. Oh wow."
-        }
-      """.trimIndent())
-    }) {
-      assertEquals(HttpStatusCode.OK, response.status())
-      assertEquals("""
-        {
-          "message" : "Character created successfully."
         }
         """.trimIndent(),
         response.content)

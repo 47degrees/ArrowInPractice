@@ -1,5 +1,7 @@
-package com.fortysevendeg.arrowinpractice
+package com.fortysevendeg.arrowinpractice.houses
 
+import com.fortysevendeg.arrowinpractice.authorizedRequest
+import com.fortysevendeg.arrowinpractice.setupModule
 import io.ktor.application.Application
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
@@ -10,7 +12,7 @@ import io.ktor.server.testing.withTestApplication
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class HousesEndpointsTests {
+class GetHousesOverviewTest {
 
   @Test
   fun `should return expected houses overview`() = withTestApplication(Application::setupModule) {
