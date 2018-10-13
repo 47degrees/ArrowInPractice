@@ -21,8 +21,8 @@ There's a cheat sheet you can double check in case you need some easy peasy clue
 <li>All details endpoints are taking <b>nullables</b> now from the Database (they're optional), since the given Id could not exist.</li>
 <li>Any data base access is prone to throw exceptions, since it mimics a real DB access. That means we should <b>try</b> to cover that case. :wink:</li>
 <li>All the calls are being <b>validated</b> in terms of Authentication. That's something we can take care of with FP.</li>
-<li>The [jamielannister/seats](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080jamielanniesterseats) endpoint encodes two <b>independent computations</b> that require to combine results in the end. You probably know how to do that using FP.</li>
-<li>The [got](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080got) endpoint encodes three <b>sequential (dependent) computations</b> to compose a combined result in the end. You know what that means, right? :stuck_out_tongue:.
+<li>The <a href="https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080jamielanniesterseats">jamielannister/seats</a> endpoint encodes two <b>independent computations</b> that require to combine results in the end. You probably know how to do that using FP.</li>
+<li>The <a href="https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080got">got</a> endpoint encodes three <b>sequential (dependent) computations</b> to compose a combined result in the end. You know what that means, right? :stuck_out_tongue:.
 <li>Every call is done asynchronously using Ktor framework behind the scenes. You should be able to translate that to <b>Async</b> constraints with Arrow.</li>
 </ul>
 </p>
