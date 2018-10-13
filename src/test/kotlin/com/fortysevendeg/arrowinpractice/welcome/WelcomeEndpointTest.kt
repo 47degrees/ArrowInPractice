@@ -1,5 +1,6 @@
-package com.fortysevendeg.arrowinpractice
+package com.fortysevendeg.arrowinpractice.welcome
 
+import com.fortysevendeg.arrowinpractice.setupModule
 import io.ktor.application.Application
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
