@@ -24,7 +24,7 @@ fun Routing.charactersPerHouseEndpoint(charactersDB: CharactersDatabase) {
         val id = houseId.toLong().houseId()
         val characters = charactersDB.getByHouseId(id)
         if (characters.isNotEmpty()) {
-          call.respond(mapOf("characters" to characters))
+          call.respond(characters)
         } else {
           throw NoCharactersFoundForHouse()
         }
