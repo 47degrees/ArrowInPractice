@@ -32,6 +32,12 @@ repositories {
     maven { url "https://dl.bintray.com/kotlin/ktor" }
 }
 
+test {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
+
 dependencies {
     // Kotlin and Ktor
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
