@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/47deg/ArrowInPractice.svg?branch=master)](https://travis-ci.org/47deg/ArrowInPractice)
 
+<img height="100" src="https://avatars2.githubusercontent.com/u/29458023?v=4&amp;s=200" width="100">
+<img height="100" src="https://avatars1.githubusercontent.com/u/479857?s=200&v=4" with="100">
+
 # Arrow in practice
 
 Lambda.World Cádiz 2018 workshop hosted by [@raulraja](https://twitter.com/raulraja) and [@JorgeCastilloPR](https://twitter.com/JorgeCastilloPR) from [@47Degrees](https://www.47deg.com/).
