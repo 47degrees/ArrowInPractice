@@ -66,10 +66,6 @@ Please, iterate [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInP
 
 Iterate the previous exercise to use "Monad bindings" (Monad Comprehensions). Check the [official Arrow docs](https://arrow-kt.io/docs/patterns/monad_comprehensions/) for more details on how those are implemented in Arrow.
 
-# Serialization
-
-All content negotiation (serialization / deserialization) is handled using the `Ktor` built in `Jackson` support.
-
 # Endpoints
 
 For detailed docs per endpoint providing `Request` and `Response` **Json** formats check the [endpoint docs](./ENDPOINTS.md).
