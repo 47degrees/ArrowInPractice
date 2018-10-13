@@ -50,22 +50,25 @@ class CharactersDatabase {
     Character(9.houseId(), 36.characterId(), 12.castleId(), "Loras Tyrell", "Mace’s son, heir to House Tyrell")
   ))
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getAll(): List<Character> = characters
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getByHouseId(houseId: HouseId): List<Character> = characters.filter { it.houseId == houseId }
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getByName(characterName: String): Character? = characters.findLast { it.name == characterName }
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getById(id: CharacterId): Character? = characters.find { it.characterId == id }
 
+  @Throws(RandomDBException::class)
   operator fun get(id: CharacterId): Character? = getById(id)
 
+  @Throws(RandomDBException::class)
   operator fun get(characterName: String): Character? = getByName(characterName)
 
+  @Throws(RandomDBException::class)
   operator fun get(houseId: HouseId): List<Character> = getByHouseId(houseId)
 
   /**
@@ -74,7 +77,7 @@ class CharactersDatabase {
    *
    * @return true if created, false if updated.
    */
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun createOrUpdate(postedCharacter: PostCharacter): Boolean {
     val storedCharacter = getByName(postedCharacter.name)
     return if (storedCharacter != null) {

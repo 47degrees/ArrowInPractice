@@ -28,14 +28,15 @@ class CastlesDatabase {
     Castle(12.castleId(), "Highgarden", "Highgarden was the seat of House Tyrell and the regional capital of the Reach. Located on the banks of the river Mander, Highgarden sits astride the Roseroad, a major thoroughfare linking Oldtown and King's Landing. Highgarden also forms the southern terminus of the the Searoad, which leads to Lannisport. As King's Landing, Oldtown, and Lannisport are the first, second, and third largest cities in the realm, heavy trade and traffic across a large swath of southern Westeros ultimately passes through Highgarden.")
   ))
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getAll(): List<Castle> = castles
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getById(id: CastleId): Castle? = castles.find { it.castleId == id }
 
   /**
    * Enabling indexed access operator for fetching by castleId, as in castlesDB[8].
    */
+  @Throws(RandomDBException::class)
   operator fun get(id: CastleId): Castle? = getById(id)
 }

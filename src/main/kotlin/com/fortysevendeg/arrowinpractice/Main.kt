@@ -14,6 +14,7 @@ import com.fortysevendeg.arrowinpractice.endpoints.createOrUpdateHouseEndpoint
 import com.fortysevendeg.arrowinpractice.endpoints.gameOfThronesEndpoint
 import com.fortysevendeg.arrowinpractice.endpoints.houseDetailsEndpoint
 import com.fortysevendeg.arrowinpractice.endpoints.housesOverviewEndpoint
+import com.fortysevendeg.arrowinpractice.endpoints.jamieLannisterSeatsEndpoint
 import com.fortysevendeg.arrowinpractice.endpoints.welcomeEndpoint
 import com.fortysevendeg.arrowinpractice.error.InvalidHouseFormatException
 import com.fortysevendeg.arrowinpractice.error.InvalidIdException
@@ -104,6 +105,7 @@ private fun Application.setupRoutes(housesDB: HousesDatabase, charactersDB: Char
     createOrUpdateCharacterEndpoint(charactersDB)
     castlesOverViewEndpoint(castlesDB)
     castleDetailsEndpoint(castlesDB)
+    jamieLannisterSeatsEndpoint(castlesDB)
     gameOfThronesEndpoint(housesDB, charactersDB, castlesDB)
   }
 }

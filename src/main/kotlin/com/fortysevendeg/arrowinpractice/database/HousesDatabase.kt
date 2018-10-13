@@ -25,23 +25,25 @@ class HousesDatabase {
     House(8.houseId(), "Tully", "House Tully rule from Riverrun in the Riverlands. Ned Strak’s wife Cathlyn is the daughter of this house."),
     House(9.houseId(), "Tyrell", "Targaryens made the Tyrells Lords of Highgardens . They are the main house in the Reach and rule from Highgarden.")))
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getAll(): List<House> = houses
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getByName(houseName: String): House? = houses.find { it.name.toLowerCase() == houseName.toLowerCase() }
 
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun getById(id: HouseId): House? = houses.find { it.houseId == id }
 
   /**
    * Enabling indexed access operator for fetching by houseId, as in housesDB[8].
    */
+  @Throws(RandomDBException::class)
   operator fun get(id: HouseId): House? = getById(id)
 
   /**
    * Enabling indexed access operator for fetching by name, as in housesDB["Stark"].
    */
+  @Throws(RandomDBException::class)
   operator fun get(houseName: String): House? = getByName(houseName)
 
   /**
@@ -50,7 +52,7 @@ class HousesDatabase {
    *
    * @return true if created, false if updated.
    */
-  @Synchronized
+  @Synchronized @Throws(RandomDBException::class)
   fun createOrUpdate(postedHouse: PostHouse): Boolean {
     val storedHouse = getByName(postedHouse.name)
     return if (storedHouse != null) {
