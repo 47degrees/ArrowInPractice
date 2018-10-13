@@ -12,6 +12,15 @@ Some key points you'll learn:
 * How to encode sequential operations with a fancier syntax using Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.
 
+# Cheat Sheet
+
+There's a cheat sheet you can double check in case you need some easy peasy clues on how proceed with the Workshop. 
+<details><summary>Click here to reveal it.</summary>
+* asd
+* qwe
+* rty
+</details>
+
 # Serialization
 
 All content negotiation (serialization / deserialization) is handled using the `Ktor` built in `Jackson` support.
