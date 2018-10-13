@@ -16,11 +16,11 @@ Some key points you'll learn:
 
 There's a cheat sheet you can double check in case you need some easy peasy clues on how proceed with the Workshop. 
 <details><summary>CLICK HERE TO REVEAL THE CHEATS!</summary>
-<p>
-* asd
-* qwe
-* rty
-</p>
+<ul>
+<li>asd</li>
+<li>asd</li>
+<li>asd</li>
+</ul>
 </details>
 
 # Serialization
