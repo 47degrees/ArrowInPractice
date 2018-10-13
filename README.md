@@ -15,10 +15,12 @@ Some key points you'll learn:
 # Cheat Sheet
 
 There's a cheat sheet you can double check in case you need some easy peasy clues on how proceed with the Workshop. 
-<details><summary>**Click here to reveal it!**</summary>
+<details><summary>CLICK HERE TO REVEAL THE CHEATS!</summary>
+<p>
 * asd
 * qwe
 * rty
+</p>
 </details>
 
 # Serialization
