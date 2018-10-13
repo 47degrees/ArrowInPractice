@@ -62,6 +62,10 @@ Every call is done asynchronously using Ktor framework behind the scenes. You sh
 
 Please, iterate [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid) one more time to achieve asynchrony without relying on the Ktor framework as is.
 
+## 7. Monad Comprehensions
+
+Iterate the previous exercise to use "Monad bindings" (Monad Comprehensions). Check the [official Arrow docs](https://arrow-kt.io/docs/patterns/monad_comprehensions/) for more details on how those are implemented in Arrow.
+
 # Serialization
 
 All content negotiation (serialization / deserialization) is handled using the `Ktor` built in `Jackson` support.
