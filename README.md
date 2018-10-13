@@ -33,8 +33,8 @@ forget to run the app so you get your local server deployed to localhost).
 
 ## Tests
 
-* TBD
-
-## Curl (Import in Postman, Paw, or use in command line)
-
-* TBD
+* There are Unit tests per endpoint covering all the required cases we're interested in. Run them like:
+```
+./gradlew test
+``` 
+Or just by using the IDE tools (play icon to run tests on test class declarations or right click in test packages -> "run all tests in"...)
