@@ -19,8 +19,8 @@ import io.ktor.routing.get
 import io.ktor.util.pipeline.ContextDsl
 import io.ktor.util.pipeline.PipelineContext
 
-private fun paramOf(name: String, app: PipelineContext<Unit, ApplicationCall>) =
-  app.call.parameters["characterId"].toOption()
+private fun paramOf(name: String, app: PipelineContext<Unit, ApplicationCall>): Option<String> =
+  app.call.parameters[name].toOption()
 
 private fun IO.Companion.characterIdOrNotFound(maybeId: Option<String>): IO<String> =
   maybeId.fold(
