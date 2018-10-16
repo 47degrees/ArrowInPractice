@@ -1,5 +1,7 @@
 package com.fortysevendeg.arrowinpractice
 
+import arrow.effects.IO
+import arrow.effects.effect
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CastlesDatabase
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
@@ -101,7 +103,7 @@ private fun Application.setupRoutes(housesDB: HousesDatabase, charactersDB: Char
     createOrUpdateHouseEndpoint(housesDB)
     charactersPerHouseEndpoint(charactersDB)
     charactersOverviewEndpoint(charactersDB)
-    characterDetailsEndpoint(charactersDB)
+    characterDetailsEndpoint(IO.effect(), charactersDB)
     createOrUpdateCharacterEndpoint(charactersDB)
     castlesOverViewEndpoint(castlesDB)
     castleDetailsEndpoint(castlesDB)

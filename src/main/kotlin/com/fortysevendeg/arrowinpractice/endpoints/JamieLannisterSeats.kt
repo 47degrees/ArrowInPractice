@@ -4,10 +4,8 @@ import com.fortysevendeg.arrowinpractice.database.CastlesDatabase
 import com.fortysevendeg.arrowinpractice.error.InvalidIdException
 import com.fortysevendeg.arrowinpractice.error.NotFoundException
 import com.fortysevendeg.arrowinpractice.model.CastleId
-import com.fortysevendeg.arrowinpractice.serialization.castleId
 import io.ktor.application.call
 import io.ktor.auth.authenticate
-import io.ktor.request.path
 import io.ktor.response.respond
 import io.ktor.routing.Routing
 import io.ktor.routing.get

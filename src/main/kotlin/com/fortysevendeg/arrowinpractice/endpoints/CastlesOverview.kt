@@ -1,7 +1,6 @@
 package com.fortysevendeg.arrowinpractice.endpoints
 
 import com.fortysevendeg.arrowinpractice.database.CastlesDatabase
-import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import io.ktor.application.call
 import io.ktor.auth.authenticate
 import io.ktor.response.respond
