@@ -20,18 +20,41 @@ Some key points you'll learn:
 
 ## 1. Handling nullability
 
-All details endpoint implementations are taking **nullables** now from the Database (they're optional), since the given Id could not exist. You must 
-translate that concern to a FP related data type. Do it for the [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid).
+When starting a project with Arrow first go to [arrow-kt.io](https://arrow-kt.io/docs/#basic-setup) to include the necessary dependencies.
+The dependencies used in this work shop are included below for convenience
 
-To double check your changes, run [GetCharacterDetailsTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/GetCharacterDetailsTest.kt) suite. You've got tests for both scenarios there (found and not found). They should keep passing. 
+```groovy
+compile "io.arrow-kt:arrow-effects:$arrow_version"
+compile "io.arrow-kt:arrow-instances-data:$arrow_version"
+```
+
+To enable Arrow in your project include these dependencies in the `dependencies` section in build.gradle file:
+the run:
+
+```groovy
+./gradlew clean build
+```
+
+All details endpoint implementations are non optional typed values now coming from the Database, These data bases values may be absent when using an Id to look them up. You must 
+translate that concern to a FP related data type such as `arrow.core.Option`. 
+Do it for the [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid) located at
+`com/fortysevendeg/arrowinpractice/endpoints/CharacterDetails.kt`
+
+To double check your changes, run `src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/GetCharacterDetailsTest.kt` suite. 
+You've got tests for both scenarios there (found and not found). They should keep passing. 
+You may run this test in IntelliJ IDEA (right click and Run in the test file) or via the command line with:
+
+```groovy
+./gradlew test --tests "com.fortysevendeg.arrowinpractice.characters.GetCharacterDetailsTest"
+```
 
 ## 2. Handling exceptions
 
-Any data base access is prone to throw exceptions, since it mimics a real DB access. That means we should <b>try</b> to cover that case. :wink: 
+Any data base access is prone to throw exceptions, since it mimics a real DB access. That means we may use **arrow.core.Try** to cover that case. 
 
 Staying on the same endpoint, you'll see how it's implementation ([GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid)) uses `try catch` imperative style block to catch all possible database / parsing exceptions and return an `InvalidIdException` in that case, which translates to an HTTP `BadRequest` error response.
 
-Again, run  [GetCharacterDetailsTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/GetCharacterDetailsTest.kt) suite to validate your changes are correct. There's a test covering this case. Response should not vary and tests should keep passing.
+Again, run [GetCharacterDetailsTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/GetCharacterDetailsTest.kt) suite to validate your changes are correct. There's a test covering this case. Response should not vary and tests should keep passing.
 
 ## 3. Handling authentication
 

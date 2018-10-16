@@ -62,10 +62,10 @@ class CharactersDatabase {
   fun getByName(characterName: String): Character? = characters.findLast { it.name == characterName }
 
   @Synchronized @Throws(RandomDBException::class)
-  fun getById(id: CharacterId): Option<Character> = characters.find { it.characterId == id }.toOption()
+  fun getById(id: Long): Option<Character> = characters.find { it.characterId.id == id }.toOption()
 
   @Throws(RandomDBException::class)
-  operator fun get(id: CharacterId): Option<Character> = getById(id)
+  operator fun get(id: Long): Option<Character> = getById(id)
 
   @Throws(RandomDBException::class)
   operator fun get(characterName: String): Character? = getByName(characterName)
