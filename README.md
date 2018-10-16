@@ -9,9 +9,9 @@ Lambda.World Cádiz 2018 workshop hosted by [@raulraja](https://twitter.com/raul
 This workshop starts with a basic **RESTful API** coded using [ktor](https://ktor.io/) ([@JetBrains](https://www.jetbrains.com/)). Our intention is to iterate over it converting it to a more functional style by putting [Arrow](https://arrow-kt.io/) into practice.
 
 Some key points you'll learn:
-* How to model your application immutable data using Arrow datatypes.
-* How to operate over and transform the data using Typeclass defined behaviors.
-* How to achieve polymorphism using the power of abstraction of typeclasses.
+* How to model your application immutable data using Arrow data types.
+* How to operate over and transform the data using Type class defined behaviors.
+* How to achieve polymorphism using the power of abstraction of type classes.
 * How to use Optics to read and modify nested immutable data structures.
 * How to encode sequential operations with a fancier syntax using Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.

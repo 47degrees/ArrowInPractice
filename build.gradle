@@ -46,6 +46,8 @@ dependencies {
     compile "io.ktor:ktor-jackson:$ktor_version"
     compile "io.ktor:ktor-auth:$ktor_version"
     compile "ch.qos.logback:logback-classic:1.2.1"
+    compile "io.arrow-kt:arrow-effects:$arrow_version"
+    compile "io.arrow-kt:arrow-instances-data:$arrow_version"
 
     // Test
     testCompile group: 'junit', name: 'junit', version: '4.12'
