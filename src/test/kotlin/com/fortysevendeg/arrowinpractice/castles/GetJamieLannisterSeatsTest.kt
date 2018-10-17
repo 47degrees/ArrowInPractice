@@ -1,7 +1,7 @@
 package com.fortysevendeg.arrowinpractice.castles
 
 import com.fortysevendeg.arrowinpractice.authorizedRequest
-import com.fortysevendeg.arrowinpractice.setupModule
+import com.fortysevendeg.arrowinpractice.workshop.setupModule
 import io.ktor.application.Application
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode

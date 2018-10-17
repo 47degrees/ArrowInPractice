@@ -1,4 +1,4 @@
-package com.fortysevendeg.arrowinpractice.endpoints
+package com.fortysevendeg.arrowinpractice.workshop.ex1
 
 import arrow.Kind
 import arrow.core.Option
@@ -19,25 +19,25 @@ import io.ktor.routing.get
 import io.ktor.util.pipeline.ContextDsl
 import io.ktor.util.pipeline.PipelineContext
 
-private fun paramOf(name: String, app: PipelineContext<Unit, ApplicationCall>): Option<String> =
-  app.call.parameters[name].toOption()
+fun paramOf(name: String, call: ApplicationCall): Option<String> =
+  call.parameters[name].toOption()
 
-private fun IO.Companion.characterIdOrNotFound(maybeId: Option<String>): IO<String> =
+fun IO.Companion.characterIdOrNotFound(maybeId: Option<String>): IO<String> =
   maybeId.fold(
     { raiseError(NotFoundException()) },
     { just(it) }
   )
 
-private fun IO.Companion.stringIdToLong(characterIdString: String): IO<Long> =
+fun IO.Companion.stringIdToLong(characterIdString: String): IO<Long> =
   IO { characterIdString.toLong() }.handleErrorWith { raiseError(InvalidIdException()) }
 
-private fun IO.Companion.fetchCharacterById(charactersDB: CharactersDatabase, characterId: Long): IO<Character> =
+fun IO.Companion.fetchCharacterById(charactersDB: CharactersDatabase, characterId: Long): IO<Character> =
   charactersDB.getById(characterId).fold(
     { raiseError(NotFoundException()) },
     { just(it) }
   )
 
-private fun IO.Companion.handleDBExceptions(charactersFetch: IO<Character>): IO<Character> =
+fun IO.Companion.handleDBExceptions(charactersFetch: IO<Character>): IO<Character> =
   charactersFetch.handleErrorWith {
     when (it) {
       is NotFoundException -> raiseError(NotFoundException())
@@ -52,9 +52,9 @@ private fun IO.Companion.handleDBExceptions(charactersFetch: IO<Character>): IO<
  */
 fun Routing.characterDetailsEndpoint(charactersDB: CharactersDatabase) {
   authenticate {
-    getIO("/characters/{characterId}") { app ->
+    getIO("/characters/{characterId}") { pipelineContext ->
       monad().binding {
-        val maybeId: Option<String> = paramOf("characterId", app)
+        val maybeId: Option<String> = paramOf("characterId", pipelineContext.call)
         val characterIdString: String = characterIdOrNotFound(maybeId).bind()
         val characterId = stringIdToLong(characterIdString).bind()
         val character = handleDBExceptions(fetchCharacterById(charactersDB, characterId)).bind()

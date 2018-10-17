@@ -1,4 +1,4 @@
-package com.fortysevendeg.arrowinpractice
+package com.fortysevendeg.arrowinpractice.workshop
 
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CastlesDatabase
@@ -6,7 +6,7 @@ import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.database.HousesDatabase
 import com.fortysevendeg.arrowinpractice.endpoints.castleDetailsEndpoint
 import com.fortysevendeg.arrowinpractice.endpoints.castlesOverViewEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.characterDetailsEndpoint
+import com.fortysevendeg.arrowinpractice.workshop.ex1.characterDetailsEndpoint
 import com.fortysevendeg.arrowinpractice.endpoints.charactersOverviewEndpoint
 import com.fortysevendeg.arrowinpractice.endpoints.charactersPerHouseEndpoint
 import com.fortysevendeg.arrowinpractice.endpoints.createOrUpdateCharacterEndpoint
