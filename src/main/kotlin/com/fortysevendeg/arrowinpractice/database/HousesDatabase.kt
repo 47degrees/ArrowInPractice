@@ -41,6 +41,12 @@ class HousesDatabase {
   operator fun get(id: HouseId): House? = getById(id)
 
   /**
+   * Enabling indexed access operator for fetching by houseId, as in housesDB[8].
+   */
+  @Throws(RandomDBException::class)
+  operator fun get(id: Long): House? = getById(id.houseId())
+
+  /**
    * Enabling indexed access operator for fetching by name, as in housesDB["Stark"].
    */
   @Throws(RandomDBException::class)

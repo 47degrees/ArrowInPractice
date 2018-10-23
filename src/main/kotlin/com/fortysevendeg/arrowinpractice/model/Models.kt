@@ -15,3 +15,5 @@ data class Character(val houseId: HouseId,
                      val description: String)
 
 data class Castle(val castleId: CastleId, val name: String, val description: String)
+
+data class HouseLocation(val house: House, val castle: Castle)
