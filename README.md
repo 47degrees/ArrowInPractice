@@ -98,7 +98,7 @@ Once this exercise is completed the following test should pass:
 Reference Links:
 
 * [IO](https://arrow-kt.io/docs/effects/io/)
-* [Control structures `when`] (https://kotlinlang.org/docs/reference/control-flow.html#when-expression)
+* [Control structures `when`](https://kotlinlang.org/docs/reference/control-flow.html#when-expression)
 
 ## 1e. Translating raised errors in the context of `IO`
 
