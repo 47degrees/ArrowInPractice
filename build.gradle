@@ -53,7 +53,6 @@ dependencies {
     compile "ch.qos.logback:logback-classic:1.2.1"
     compile "io.arrow-kt:arrow-effects-instances:$arrow_version"
     compile "io.arrow-kt:arrow-instances-data:$arrow_version"
-    //compile "com.sun.org.apache.xml.internal.security.utils"
     compile "com.sun.xml.security:xml-security-impl:1.0"
     
     // Test
