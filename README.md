@@ -41,16 +41,16 @@ translate that concern to a FP related data type such as `arrow.core.Option`.
 Make the function `com.fortysevendeg.arrowinpractice.workshop.ex1.paramOf` located at
 `com/fortysevendeg/arrowinpractice/endpoints/CharacterDetails.kt` return an `Option<String>` instead of a `String?`.
 
-To double check your changes, run `src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/WorkshopTests.kt` suite. 
-
-Once this exercise is completed the following test should pass:
-- `1a should extract params from request`
+To double check your changes, run `com.fortysevendeg.arrowinpractice.workshop.ex1.WorkshopTests` suite. 
 
 You may run this test in IntelliJ IDEA (right click and Run in the test file) or via the command line with:
 
 ```groovy
 ./gradlew test --tests "com.fortysevendeg.arrowinpractice.workshop.ex1.WorkshopTests"
 ```
+
+Once this exercise is completed the following test should pass:
+- `1a should extract params from request`
 
 If you want to keep test running while making changes you may prepend the `-t` modifier to the after `--tests` in the command above.
 

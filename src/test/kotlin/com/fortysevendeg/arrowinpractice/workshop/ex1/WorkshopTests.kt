@@ -68,7 +68,7 @@ class WorkshopTests {
     val db = CharactersDatabase()
     val character = IO.fetchCharacterById(db, 16).unsafeRunSync()
     assertEquals(
-      character.characterId.id,
+      character.characterId,
       16L
     )
   }
@@ -121,8 +121,8 @@ class WorkshopTests {
       IO.houseAndLocationEndpoint(
         housesDB,
         castleDB,
-        house.houseId.id,
-        castle.castleId.id
+        house.houseId,
+        castle.castleId
       ).attempt().unsafeRunSync(),
       HouseLocation(house, castle).right()
     )
