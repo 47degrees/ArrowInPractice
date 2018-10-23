@@ -50,13 +50,13 @@ You may run this test in IntelliJ IDEA (right click and Run in the test file) or
 ```
 
 Once this exercise is completed the following test should pass:
-- `1a should extract params from request`
+* `1a should extract params from request`
 
 If you want to keep test running while making changes you may prepend the `-t` modifier to the after `--tests` in the command above.
 
 Reference Links:
- - [arrow.core.Option data type](https://arrow-kt.io/docs/datatypes/option/)
- - [Nullable types](https://kotlinlang.org/docs/reference/null-safety.html)
+ * [arrow.core.Option data type](https://arrow-kt.io/docs/datatypes/option/)
+ * [Nullable types](https://kotlinlang.org/docs/reference/null-safety.html)
 
 ## 1b. Folding over optional values
 
@@ -65,8 +65,8 @@ Once we receive the endpoint parameters as `Option<String>` we need to contempla
 Modify `com.fortysevendeg.arrowinpractice.workshop.ex1.idOrNotFound` such as that if a value is found it's returned in `IO` and if the value is missing we raise a `NotFoundException` error in `IO`.
 
 Once this exercise is completed the following test should pass:
-- `1b should return a character Id or a raised NotFound exception in the context of IO`
-- `1b should return a NotFound exception in the context of IO when an id is not found`
+* `1b should return a character Id or a raised NotFound exception in the context of IO`
+* `1b should return a NotFound exception in the context of IO when an id is not found`
 
 Reference Links:
 
@@ -78,8 +78,8 @@ Reference Links:
 Converting string to long values may fail with an exception since it relies in a third party api `String.toLong`. Modify `com.fortysevendeg.arrowinpractice.workshop.ex1.stringIdToLong` so it captures this effect in `IO` and translates any thrown exceptions to a `InvalidIdException`. This may be implemented in a few different ways depending on whether you use `handleErrorWith`, `attempt + fold + just/raiseError`, etc.
 
 Once this exercise is completed the following test should pass:
-- `1c should properly handle String#toLong with valid Long values`
-- `1c should properly handle String#toLong raising errors as InvalidIdException`
+* `1c should properly handle String#toLong with valid Long values`
+* `1c should properly handle String#toLong raising errors as InvalidIdException`
 
 Reference Links:
 
@@ -92,8 +92,8 @@ When querying the database with a set of `Long` values the returned objects may 
 Return the db object in the context of `IO` or raise a `NotFoundException` when the db returns an absent value.
 
 Once this exercise is completed the following test should pass:
-- `1d fetch a character by id from the database for a given valid character id`
-- `1d fetch a character by id from the database results in a NotFound raised error for invalid ids`
+* `1d fetch a character by id from the database for a given valid character id`
+* `1d fetch a character by id from the database results in a NotFound raised error for invalid ids`
 
 Reference Links:
 
@@ -106,8 +106,8 @@ Handle all database errors in `com.fortysevendeg.arrowinpractice.workshop.ex1.ha
 
 Once this exercise is completed the following test should pass:
 
-- `1e handle DB exceptions preserving NotFoundExceptions`
-- `1e handle DB exceptions preserving NotFoundExceptions but translating all others to InvalidIdException`
+* `1e handle DB exceptions preserving NotFoundExceptions`
+* `1e handle DB exceptions preserving NotFoundExceptions but translating all others to InvalidIdException`
 
 ## 2a. Translating raised errors in the context of `IO`
 
@@ -115,8 +115,8 @@ When handling multiple ids for unrelated database objects we may independently f
 
 Once this exercise is completed the following test should pass:
 
-- `1e handle DB exceptions preserving NotFoundExceptions`
-- `1e handle DB exceptions preserving NotFoundExceptions but translating all others to InvalidIdException`
+* `1e handle DB exceptions preserving NotFoundExceptions`
+* `1e handle DB exceptions preserving NotFoundExceptions but translating all others to InvalidIdException`
 
 Reference Links:
 
