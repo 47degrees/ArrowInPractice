@@ -104,7 +104,7 @@ class WorkshopTests {
     val castleDB = CastlesDatabase()
     assertEquals(
       IO
-        .houseAndLocation(housesDB, castleDB, 99, 99)
+        .houseAndLocationEndpoint(housesDB, castleDB, 99, 99)
         .attempt()
         .unsafeRunSync(),
       NotFoundException().left()
@@ -118,7 +118,7 @@ class WorkshopTests {
     val house = housesDB[2].toOption().getOrElse { fail("house 2 not found") }
     val castle = castleDB[6].toOption().getOrElse { fail("castle 6 not found") }
     assertEquals(
-      IO.houseAndLocation(
+      IO.houseAndLocationEndpoint(
         housesDB,
         castleDB,
         house.houseId.id,

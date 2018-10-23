@@ -4,22 +4,10 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fortysevendeg.arrowinpractice.database.CastlesDatabase
 import com.fortysevendeg.arrowinpractice.database.CharactersDatabase
 import com.fortysevendeg.arrowinpractice.database.HousesDatabase
-import com.fortysevendeg.arrowinpractice.endpoints.castleDetailsEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.castlesOverViewEndpoint
 import com.fortysevendeg.arrowinpractice.workshop.ex1.characterDetailsEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.charactersOverviewEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.charactersPerHouseEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.createOrUpdateCharacterEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.createOrUpdateHouseEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.gameOfThronesEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.houseDetailsEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.housesOverviewEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.jamieLannisterSeatsEndpoint
-import com.fortysevendeg.arrowinpractice.endpoints.welcomeEndpoint
-import com.fortysevendeg.arrowinpractice.error.InvalidHouseFormatException
 import com.fortysevendeg.arrowinpractice.error.InvalidIdException
-import com.fortysevendeg.arrowinpractice.error.NoCharactersFoundForHouse
 import com.fortysevendeg.arrowinpractice.error.NotFoundException
+import com.fortysevendeg.arrowinpractice.workshop.ex1.houseAndLocationEndpoint
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
@@ -84,28 +72,12 @@ private fun Application.setupStatusCodes() {
     exception<NotFoundException> { exception ->
       call.respond(HttpStatusCode.NotFound, mapOf("error" to (exception.message ?: "")))
     }
-    exception<NoCharactersFoundForHouse> { exception ->
-      call.respond(HttpStatusCode.NotFound, mapOf("error" to (exception.message ?: "")))
-    }
-    exception<InvalidHouseFormatException> { exception ->
-      call.respond(HttpStatusCode.BadRequest, mapOf("error" to (exception.message ?: "")))
-    }
   }
 }
 
 private fun Application.setupRoutes(housesDB: HousesDatabase, charactersDB: CharactersDatabase, castlesDB: CastlesDatabase) {
   routing {
-    welcomeEndpoint()
-    housesOverviewEndpoint(housesDB)
-    houseDetailsEndpoint(housesDB)
-    createOrUpdateHouseEndpoint(housesDB)
-    charactersPerHouseEndpoint(charactersDB)
-    charactersOverviewEndpoint(charactersDB)
     characterDetailsEndpoint(charactersDB)
-    createOrUpdateCharacterEndpoint(charactersDB)
-    castlesOverViewEndpoint(castlesDB)
-    castleDetailsEndpoint(castlesDB)
-    jamieLannisterSeatsEndpoint(castlesDB)
-    gameOfThronesEndpoint(housesDB, charactersDB, castlesDB)
+    houseAndLocationEndpoint(housesDB, castlesDB)
   }
 }

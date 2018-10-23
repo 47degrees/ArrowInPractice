@@ -46,7 +46,7 @@ fun IO.Companion.handleDBExceptions(charactersFetch: IO<Character>): IO<Characte
     }
   }
 
-fun IO.Companion.houseAndLocation(
+fun IO.Companion.houseAndLocationEndpoint(
   housesDB: HousesDatabase,
   castlesDB: CastlesDatabase,
   houseId: Long,
@@ -84,7 +84,7 @@ fun Routing.characterDetailsEndpoint(charactersDB: CharactersDatabase) {
  *
  * Authentication: Basic (user:password encoded in Base64).
  */
-fun Routing.houseAndLocation(
+fun Routing.houseAndLocationEndpoint(
   housesDB: HousesDatabase,
   castlesDB: CastlesDatabase
 ) =
@@ -97,7 +97,7 @@ fun Routing.houseAndLocation(
         val castleId = idOrNotFound(maybeCastleId).bind()
         val hId = stringIdToLong(houseId).bind()
         val cId = stringIdToLong(castleId).bind()
-        houseAndLocation(housesDB, castlesDB, hId, cId)
+        houseAndLocationEndpoint(housesDB, castlesDB, hId, cId)
       }
     }
   }
