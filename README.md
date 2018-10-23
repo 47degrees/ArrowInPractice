@@ -70,8 +70,8 @@ Once this exercise is completed the following test should pass:
 
 Reference Links:
 
-[IO.just](https://arrow-kt.io/docs/effects/io/#just)
-[IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
+* [IO.just](https://arrow-kt.io/docs/effects/io/#just)
+* [IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
 
 ## 1c. Handling and recovering from errors
 
@@ -83,7 +83,7 @@ Once this exercise is completed the following test should pass:
 
 Reference Links:
 
-[IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
+* [IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
 
 
 ## 1d. Returning db results and raising errors for missing db objects
@@ -97,8 +97,8 @@ Once this exercise is completed the following test should pass:
 
 Reference Links:
 
-[IO](https://arrow-kt.io/docs/effects/io/)
-[Control structures `when`] (https://kotlinlang.org/docs/reference/control-flow.html#when-expression)
+* [IO](https://arrow-kt.io/docs/effects/io/)
+* [Control structures `when`] (https://kotlinlang.org/docs/reference/control-flow.html#when-expression)
 
 ## 1e. Translating raised errors in the context of `IO`
 
@@ -120,9 +120,9 @@ Once this exercise is completed the following test should pass:
 
 Reference Links:
 
-[Applicative Builder](https://arrow-kt.io/docs/typeclasses/applicative/#applicative-builder-examples)
-[IO.just](https://arrow-kt.io/docs/effects/io/#just)
-[IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
+* [Applicative Builder](https://arrow-kt.io/docs/typeclasses/applicative/#applicative-builder-examples)
+* [IO.just](https://arrow-kt.io/docs/effects/io/#just)
+* [IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
 
 # License
 
