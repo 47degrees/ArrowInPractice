@@ -124,6 +124,22 @@ Reference Links:
 * [IO.just](https://arrow-kt.io/docs/effects/io/#just)
 * [IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
 
+### Solutions
+
+You can get a working workspace where all test pass with solutions in the `solutions` git tag.
+
+```bash
+git fetch --all --tags --prune
+git checkout solutions
+```
+
+Or revert back to the original workshop state with
+
+```aidl
+git fetch --all --tags --prune
+git checkout workshop
+```
+
 # License
 
     Copyright (C) 2018 47 Degrees

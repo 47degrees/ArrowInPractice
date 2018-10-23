@@ -159,3 +159,21 @@ Implementations may be completed with the following API but you can also be crea
 - IO.raiseError
 - IO.handleErrorWith
 - Applicative#map (arrow.instances.map.applicative.map)
+
+---
+
+# Arrow :: Workshop Solutions
+
+You can get a working workspace where all test pass with solutions in the `solutions` git tag.
+
+```bash
+git fetch --all --tags --prune
+git checkout solutions
+```
+
+Or revert back to the original workshop state with
+
+```bash
+git fetch --all --tags --prune
+git checkout workshop
+```
