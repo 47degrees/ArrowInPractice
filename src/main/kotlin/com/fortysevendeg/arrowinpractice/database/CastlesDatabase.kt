@@ -2,7 +2,9 @@ package com.fortysevendeg.arrowinpractice.database
 
 import com.fortysevendeg.arrowinpractice.model.Castle
 import com.fortysevendeg.arrowinpractice.model.CastleId
+import com.fortysevendeg.arrowinpractice.model.House
 import com.fortysevendeg.arrowinpractice.serialization.castleId
+import com.fortysevendeg.arrowinpractice.serialization.houseId
 import java.util.*
 
 class CastlesDatabase {
@@ -33,6 +35,12 @@ class CastlesDatabase {
 
   @Synchronized @Throws(RandomDBException::class)
   fun getById(id: CastleId): Castle? = castles.find { it.castleId == id }
+
+  /**
+   * Enabling indexed access operator for fetching by houseId, as in housesDB[8].
+   */
+  @Throws(RandomDBException::class)
+  operator fun get(id: Long): Castle? = getById(id.castleId())
 
   /**
    * Enabling indexed access operator for fetching by castleId, as in castlesDB[8].

@@ -1,5 +1,7 @@
 package com.fortysevendeg.arrowinpractice.database
 
+import arrow.core.Option
+import arrow.core.toOption
 import com.fortysevendeg.arrowinpractice.model.Character
 import com.fortysevendeg.arrowinpractice.model.CharacterId
 import com.fortysevendeg.arrowinpractice.model.HouseId
@@ -60,10 +62,10 @@ class CharactersDatabase {
   fun getByName(characterName: String): Character? = characters.findLast { it.name == characterName }
 
   @Synchronized @Throws(RandomDBException::class)
-  fun getById(id: CharacterId): Character? = characters.find { it.characterId == id }
+  fun getById(id: Long): Option<Character> = characters.find { it.characterId.id == id }.toOption()
 
   @Throws(RandomDBException::class)
-  operator fun get(id: CharacterId): Character? = getById(id)
+  operator fun get(id: Long): Option<Character> = getById(id)
 
   @Throws(RandomDBException::class)
   operator fun get(characterName: String): Character? = getByName(characterName)

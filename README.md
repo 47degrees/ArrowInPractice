@@ -4,91 +4,125 @@
 
 # Arrow in practice
 
-Lambda.World Cádiz 2018 workshop hosted by [@raulraja](https://twitter.com/raulraja) and [@JorgeCastilloPR](https://twitter.com/JorgeCastilloPR) from [@47Degrees](https://www.47deg.com/).
+Lambda.World Cádiz 2018 workshop hosted by [@JorgeCastilloPR](https://twitter.com/JorgeCastilloPR) and [@raulraja](https://twitter.com/raulraja) from [@47Degrees](https://www.47deg.com/).
 
 This workshop starts with a basic **RESTful API** coded using [ktor](https://ktor.io/) ([@JetBrains](https://www.jetbrains.com/)). Our intention is to iterate over it converting it to a more functional style by putting [Arrow](https://arrow-kt.io/) into practice.
 
 Some key points you'll learn:
-* How to model your application immutable data using Arrow datatypes.
-* How to operate over and transform the data using Typeclass defined behaviors.
-* How to achieve polymorphism using the power of abstraction of typeclasses.
-* How to use Optics to read and modify nested immutable data structures.
-* How to encode sequential operations with a fancier syntax using Monad Comprehensions.
+* How to handle absent values incoming from an HttpRequest with the Arrow data types.
+* How lift values and raise errors inside the context of `IO`
+* How to defer side effecting and exception throwing computations with `IO`
+* How to recover from failed computations in the context of `IO`
+* How to reduce a set of potential values into a single one with `fold` 
+* How to encode sequential operations with Monad Comprehensions.
 * How to encode non-dependent operations using the Applicative Builder.
 
 # Exercises
 
-## 1. Handling nullability
+## 1a. Handling nullability
 
-All details endpoint implementations are taking **nullables** now from the Database (they're optional), since the given Id could not exist. You must 
-translate that concern to a FP related data type. Do it for the [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid).
+When starting a project with Arrow first go to [arrow-kt.io](https://arrow-kt.io/docs/#basic-setup) to include the necessary dependencies.
+The dependencies used in this work shop are included below for convenience
 
-To double check your changes, run [GetCharacterDetailsTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/GetCharacterDetailsTest.kt) suite. You've got tests for both scenarios there (found and not found). They should keep passing. 
-
-## 2. Handling exceptions
-
-Any data base access is prone to throw exceptions, since it mimics a real DB access. That means we should <b>try</b> to cover that case. :wink: 
-
-Staying on the same endpoint, you'll see how it's implementation ([GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid)) uses `try catch` imperative style block to catch all possible database / parsing exceptions and return an `InvalidIdException` in that case, which translates to an HTTP `BadRequest` error response.
-
-Again, run  [GetCharacterDetailsTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/GetCharacterDetailsTest.kt) suite to validate your changes are correct. There's a test covering this case. Response should not vary and tests should keep passing.
-
-## 3. Handling authentication
-
-All endpoints (except the welcome one) are authenticated using `Basic` auth. The auth credentials are the following string encoded in Base64:
-```
-Basic georgerrmartin:lambdaworldrules
+```groovy
+compile "io.arrow-kt:arrow-effects-instances:$arrow_version"
+compile "io.arrow-kt:arrow-instances-data:$arrow_version"
 ```
 
-This is a validation and there's a data type for that type of error control in Arrow. Please switch the implementation to it for the [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid)).
+To enable Arrow in your project include these dependencies in the `dependencies` section in build.gradle file:
+the run:
 
-## 4. Independent computations
-
-There's an endpoint called [/jammielannister/seats](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080jamielannisterseats) that 
-encodes two **independent computations** that require to combine results in the end. You probably know how to do that using FP.
-
-To validate this one, you can go to the [GetJamieLannisterSeatsTest](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/castles/GetJamieLannisterSeatsTest.kt) suite and run it.
-
-## 5. Dependent (sequential) computations
-
-There's an endpoint called [got](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080got) that encodes 
-three **sequential (dependent) computations** to compose a combined result in the end. You know what that means, right? :stuck_out_tongue:
-
-To validate this one, go to [GetGotTest.kt](https://github.com/47deg/ArrowInPractice/blob/master/src/test/kotlin/com/fortysevendeg/arrowinpractice/got/GetGotTest.kt) and run the suite.
-
-## 6. Async computations
-
-Every call is done asynchronously using Ktor framework behind the scenes. You should be able to translate that to <b>Async</b> constraints with Arrow.
-
-Please, iterate [GetCharacterDetails Endpoint](https://github.com/47deg/ArrowInPractice/blob/master/ENDPOINTS.md#get-http00008080charactersid) one more time to achieve asynchrony without relying on the Ktor framework as is.
-
-## 7. Monad Comprehensions
-
-Iterate the previous exercise to use "Monad bindings" (Monad Comprehensions). Check the [official Arrow docs](https://arrow-kt.io/docs/patterns/monad_comprehensions/) for more details on how those are implemented in Arrow.
-
-# Endpoints
-
-For detailed docs per endpoint providing `Request` and `Response` **Json** formats check the [endpoint docs](./ENDPOINTS.md).
-
-# Testing / Running the endpoints
-
-## Http Request Built-in support
-
-There are `HTTP Request` files for each one of the endpoints into the `httpqueries` folder in the root directory. If you 
-have IntellIJ Ultimate installed, you can run them just by using the IDE and perform a real request to the endpoint. (Don't 
-forget to run the app so you get your local server deployed to localhost).
-
-![Http Requests Screenshot](./assets/HttpRequestsSS.png)
-![Http Requests Screenshot2](./assets/HttpRequestsSS2.png)
-
-## Tests
-
-There are also Unit tests per endpoint covering all the required cases we're interested in. So don't worry if you don't own a IntellIJ Idea Ultimate serial, since 
-we expect you to validate endpoints when you need using the unit tests. Run them like:
+```groovy
+./gradlew clean build
 ```
-./gradlew test
-``` 
-You can also use the IDE tools (play icon to run tests on test class declarations or right click in test packages -> "run all tests in"...)
+
+All details endpoint implementations are non optional typed values now coming from the Database. These values may be absent when using an Id to look them up. You must 
+translate that concern to a FP related data type such as `arrow.core.Option`. 
+Make the function `com.fortysevendeg.arrowinpractice.workshop.ex1.paramOf` located at
+`com/fortysevendeg/arrowinpractice/endpoints/CharacterDetails.kt` return an `Option<String>` instead of a `String?`.
+
+To double check your changes, run `src/test/kotlin/com/fortysevendeg/arrowinpractice/characters/WorkshopTests.kt` suite. 
+
+Once this exercise is completed the following test should pass:
+- `1a should extract params from request`
+
+You may run this test in IntelliJ IDEA (right click and Run in the test file) or via the command line with:
+
+```groovy
+./gradlew test --tests "com.fortysevendeg.arrowinpractice.workshop.ex1.WorkshopTests"
+```
+
+If you want to keep test running while making changes you may prepend the `-t` modifier to the after `--tests` in the command above.
+
+Reference Links:
+ - [arrow.core.Option data type](https://arrow-kt.io/docs/datatypes/option/)
+ - [Nullable types](https://kotlinlang.org/docs/reference/null-safety.html)
+
+## 1b. Folding over optional values
+
+Once we receive the endpoint parameters as `Option<String>` we need to contemplate the `Some` and `None` cases. You may use here [`when`](https://kotlinlang.org/docs/reference/control-flow.html#when-expression) or [`fold`](https://arrow-kt.io/docs/datatypes/option/) in order to contemplate both `Some` and `None` cases.
+
+Modify `com.fortysevendeg.arrowinpractice.workshop.ex1.idOrNotFound` such as that if a value is found it's returned in `IO` and if the value is missing we raise a `NotFoundException` error in `IO`.
+
+Once this exercise is completed the following test should pass:
+- `1b should return a character Id or a raised NotFound exception in the context of IO`
+- `1b should return a NotFound exception in the context of IO when an id is not found`
+
+Reference Links:
+
+[IO.just](https://arrow-kt.io/docs/effects/io/#just)
+[IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
+
+## 1c. Handling and recovering from errors
+
+Converting string to long values may fail with an exception since it relies in a third party api `String.toLong`. Modify `com.fortysevendeg.arrowinpractice.workshop.ex1.stringIdToLong` so it captures this effect in `IO` and translates any thrown exceptions to a `InvalidIdException`. This may be implemented in a few different ways depending on whether you use `handleErrorWith`, `attempt + fold + just/raiseError`, etc.
+
+Once this exercise is completed the following test should pass:
+- `1c should properly handle String#toLong with valid Long values`
+- `1c should properly handle String#toLong raising errors as InvalidIdException`
+
+Reference Links:
+
+[IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
+
+
+## 1d. Returning db results and raising errors for missing db objects
+
+When querying the database with a set of `Long` values the returned objects may not be found if the `ids` are not recognized in the db.
+Return the db object in the context of `IO` or raise a `NotFoundException` when the db returns an absent value.
+
+Once this exercise is completed the following test should pass:
+- `1d fetch a character by id from the database for a given valid character id`
+- `1d fetch a character by id from the database results in a NotFound raised error for invalid ids`
+
+Reference Links:
+
+[IO](https://arrow-kt.io/docs/effects/io/)
+[Control structures `when`] (https://kotlinlang.org/docs/reference/control-flow.html#when-expression)
+
+## 1e. Translating raised errors in the context of `IO`
+
+Handle all database errors in `com.fortysevendeg.arrowinpractice.workshop.ex1.handleDBExceptions` so that `NotFoundException` is preserved but all other exceptions are translated into `InvalidIdException`. You may use `handleErrorWith` to recover from existing errors.
+
+Once this exercise is completed the following test should pass:
+
+- `1e handle DB exceptions preserving NotFoundExceptions`
+- `1e handle DB exceptions preserving NotFoundExceptions but translating all others to InvalidIdException`
+
+## 2a. Translating raised errors in the context of `IO`
+
+When handling multiple ids for unrelated database objects we may independently fetch the objects `Applicative` vs explicitly fetching them one after another `Monad`.
+
+Once this exercise is completed the following test should pass:
+
+- `1e handle DB exceptions preserving NotFoundExceptions`
+- `1e handle DB exceptions preserving NotFoundExceptions but translating all others to InvalidIdException`
+
+Reference Links:
+
+[Applicative Builder](https://arrow-kt.io/docs/typeclasses/applicative/#applicative-builder-examples)
+[IO.just](https://arrow-kt.io/docs/effects/io/#just)
+[IO.raiseError](https://arrow-kt.io/docs/effects/io/#raiseerror)
 
 # License
 

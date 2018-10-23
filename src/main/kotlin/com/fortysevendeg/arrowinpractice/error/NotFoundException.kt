@@ -1,3 +1,3 @@
 package com.fortysevendeg.arrowinpractice.error
 
-class NotFoundException(message: String = "Not found.") : RuntimeException(message)
+data class NotFoundException(override val message: String = "Not found.") : RuntimeException(message)
