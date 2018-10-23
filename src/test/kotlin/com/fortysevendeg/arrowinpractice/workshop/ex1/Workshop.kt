@@ -21,41 +21,26 @@ import io.ktor.auth.authenticate
 import io.ktor.routing.Routing
 
 fun paramOf(name: String, call: ApplicationCall): Option<String> =
-  call.parameters[name].toOption()
+  TODO()
 
 fun IO.Companion.idOrNotFound(maybeId: Option<String>): IO<String> =
-  maybeId.fold(
-    { raiseError(NotFoundException()) },
-    { just(it) }
-  )
+  TODO()
 
 fun IO.Companion.stringIdToLong(id: String): IO<Long> =
-  IO { id.toLong() }.handleErrorWith { raiseError(InvalidIdException()) }
+  TODO()
 
 fun IO.Companion.fetchCharacterById(charactersDB: CharactersDatabase, characterId: Long): IO<Character> =
-  charactersDB.getById(characterId).fold(
-    { raiseError(NotFoundException()) },
-    { just(it) }
-  )
+  TODO()
 
 fun IO.Companion.handleDBExceptions(charactersFetch: IO<Character>): IO<Character> =
-  charactersFetch.handleErrorWith {
-    when (it) {
-      is NotFoundException -> raiseError(NotFoundException())
-      else -> raiseError(InvalidIdException())
-    }
-  }
+  TODO()
 
 fun IO.Companion.houseAndLocationEndpoint(
   housesDB: HousesDatabase,
   castlesDB: CastlesDatabase,
   houseId: Long,
   castleId: Long): IO<HouseLocation> =
-  map(housesDB[houseId].toOption(), castlesDB[castleId].toOption()) { (house, castle) ->
-    HouseLocation(house, castle)
-  }.fold({ raiseError(NotFoundException()) }) {
-    just(it)
-  }
+  TODO()
 
 /**
  * GET: Provides the character details for a given character Id.
