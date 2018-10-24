@@ -96,8 +96,8 @@ Reference Links:
 
 ## 1d. Returning db results and raising errors for missing db objects
 
-When querying the database with a set of `Long` values the returned objects may not be found if the `ids` are not recognized in the db.
-Return the db object in the context of `IO` or raise a `NotFoundException` when the db returns an absent value.
+When querying the database with a set of ids (`Long` values) the returned objects may not be found (as in the given `ids` do not correspond to any DB items).
+Return the db object in the context of `IO` if it's found, or raise a `NotFoundException` when the db returns an absent value.
 
 Once this exercise is completed the following test should pass:
 * `1d fetch a character by id from the database for a given valid character id`
