@@ -119,7 +119,7 @@ Once this exercise is completed the following test should pass:
 
 ## 2a. Translating raised errors in the context of `IO`
 
-When handling multiple ids for unrelated database objects we may independently fetch the objects `Applicative` vs explicitly fetching them one after another `Monad`.
+When handling multiple ids for unrelated database objects we may independently fetch the objects (`Applicative`) vs explicitly fetching them one after another (`Monad`).
 
 Once this exercise is completed the following test should pass:
 
