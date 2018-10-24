@@ -68,11 +68,11 @@ Reference Links:
 
 ## 1b. Folding over optional values
 
-Once we receive the endpoint parameters as `Option<String>` we need to contemplate the `Some` and `None` cases. You may use here [`when`](https://kotlinlang.org/docs/reference/control-flow.html#when-expression) or [`fold`](https://arrow-kt.io/docs/datatypes/option/) in order to contemplate both `Some` and `None` cases.
+Once we receive the endpoint parameters as `Option<String>` we need to contemplate its two possible implementations: `Some` and `None`. You may use here [`when`](https://kotlinlang.org/docs/reference/control-flow.html#when-expression) or [`fold`](https://arrow-kt.io/docs/datatypes/option/) in order to contemplate both `Some` and `None` cases.
 
 Modify `com.fortysevendeg.arrowinpractice.workshop.ex1.idOrNotFound` such as that if a value is found it's returned in `IO` and if the value is missing we raise a `NotFoundException` error in `IO`.
 
-Once this exercise is completed the following test should pass:
+Once this exercise is completed the following tests should pass:
 * `1b should return a character Id or a raised NotFound exception in the context of IO`
 * `1b should return a NotFound exception in the context of IO when an id is not found`
 
