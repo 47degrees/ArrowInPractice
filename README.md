@@ -19,7 +19,7 @@ Some key points you'll learn:
 
 # Exercises
 
-## 1a. Handling nullability
+## 0. Quick Start
 
 When starting a project with Arrow first go to [arrow-kt.io](https://arrow-kt.io/docs/#basic-setup) to include the necessary dependencies.
 The dependencies used in this work shop are included below for convenience
@@ -29,17 +29,25 @@ compile "io.arrow-kt:arrow-effects-instances:$arrow_version"
 compile "io.arrow-kt:arrow-instances-data:$arrow_version"
 ```
 
-To enable Arrow in your project include these dependencies in the `dependencies` section in build.gradle file:
-the run:
+To enable Arrow in your project include these dependencies in the `dependencies` section in build.gradle file. Then run the following command:
 
 ```groovy
 ./gradlew clean build
 ```
 
+Don't worry about the **compile time warnings and errors**. It's intended, the exercises are all marked as `TODO()` which means they're not implemented yet and therefore making tests fail. Hopefully you'll be the one fixing those! 
+
+For what is worth, you should have your gradle dependencies fetched. Alternatively, you can also **click on the gradle icon** in IntelliJ IDEA to fetch those.
+
+![Gradle Sync](./assets/gradle_sync.png)
+
+## 1a. Handling nullability
+
 All details endpoint implementations are non optional typed values now coming from the Database. These values may be absent when using an Id to look them up. You must 
 translate that concern to a FP related data type such as `arrow.core.Option`. 
+
 Make the function `com.fortysevendeg.arrowinpractice.workshop.ex1.paramOf` located at
-`com/fortysevendeg/arrowinpractice/endpoints/CharacterDetails.kt` return an `Option<String>` instead of a `String?`.
+`com/fortysevendeg/arrowinpractice/workshop/ext1/Workshop.kt` return an `Option<String>` instead of a `String?`.
 
 To double check your changes, run `com.fortysevendeg.arrowinpractice.workshop.ex1.WorkshopTests` suite. 
 
@@ -49,10 +57,10 @@ You may run this test in IntelliJ IDEA (right click and Run in the test file) or
 ./gradlew test --tests "com.fortysevendeg.arrowinpractice.workshop.ex1.WorkshopTests"
 ```
 
-Once this exercise is completed the following test should pass:
-* `1a should extract params from request`
-
 If you want to keep test running while making changes you may prepend the `-t` modifier to the after `--tests` in the command above.
+
+Once this exercise is completed the test with the following name should pass:
+* `1a should extract params from request`
 
 Reference Links:
  * [arrow.core.Option data type](https://arrow-kt.io/docs/datatypes/option/)
@@ -60,11 +68,11 @@ Reference Links:
 
 ## 1b. Folding over optional values
 
-Once we receive the endpoint parameters as `Option<String>` we need to contemplate the `Some` and `None` cases. You may use here [`when`](https://kotlinlang.org/docs/reference/control-flow.html#when-expression) or [`fold`](https://arrow-kt.io/docs/datatypes/option/) in order to contemplate both `Some` and `None` cases.
+Once we receive the endpoint parameters as `Option<String>` we need to contemplate its two possible implementations: `Some` and `None`. You may use here [`when`](https://kotlinlang.org/docs/reference/control-flow.html#when-expression) or [`fold`](https://arrow-kt.io/docs/datatypes/option/) in order to contemplate both `Some` and `None` cases.
 
 Modify `com.fortysevendeg.arrowinpractice.workshop.ex1.idOrNotFound` such as that if a value is found it's returned in `IO` and if the value is missing we raise a `NotFoundException` error in `IO`.
 
-Once this exercise is completed the following test should pass:
+Once this exercise is completed the following tests should pass:
 * `1b should return a character Id or a raised NotFound exception in the context of IO`
 * `1b should return a NotFound exception in the context of IO when an id is not found`
 
@@ -88,8 +96,8 @@ Reference Links:
 
 ## 1d. Returning db results and raising errors for missing db objects
 
-When querying the database with a set of `Long` values the returned objects may not be found if the `ids` are not recognized in the db.
-Return the db object in the context of `IO` or raise a `NotFoundException` when the db returns an absent value.
+When querying the database with a set of ids (`Long` values) the returned objects may not be found (as in the given `ids` do not correspond to any DB items).
+Return the db object in the context of `IO` if it's found, or raise a `NotFoundException` when the db returns an absent value.
 
 Once this exercise is completed the following test should pass:
 * `1d fetch a character by id from the database for a given valid character id`
@@ -111,7 +119,7 @@ Once this exercise is completed the following test should pass:
 
 ## 2a. Translating raised errors in the context of `IO`
 
-When handling multiple ids for unrelated database objects we may independently fetch the objects `Applicative` vs explicitly fetching them one after another `Monad`.
+When handling multiple ids for unrelated database objects we may independently fetch the objects (`Applicative`) vs explicitly fetching them one after another (`Monad`).
 
 Once this exercise is completed the following test should pass:
 
