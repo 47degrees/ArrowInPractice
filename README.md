@@ -29,12 +29,16 @@ compile "io.arrow-kt:arrow-effects-instances:$arrow_version"
 compile "io.arrow-kt:arrow-instances-data:$arrow_version"
 ```
 
-To enable Arrow in your project include these dependencies in the `dependencies` section in build.gradle file:
-the run:
+To enable Arrow in your project include these dependencies in the `dependencies` section in build.gradle file. Then run the following command:
 
 ```groovy
 ./gradlew clean build
 ```
+
+Don't worry about the **compile time warnings and errors**. It's intended, the exercises are all marked as `TODO()` which means they're not implemented yet and therefore making tests fail. Hopefully you'll be the one fixing those! 
+For what is worth, you should have your gradle dependencies fetched. Alternatively, you can also click on the gradle icon in IntellIJ Idea to fetch those.
+
+![Gradle Sync](./assets/gradle_sync.png)
 
 All details endpoint implementations are non optional typed values now coming from the Database. These values may be absent when using an Id to look them up. You must 
 translate that concern to a FP related data type such as `arrow.core.Option`. 
