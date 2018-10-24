@@ -19,7 +19,7 @@ Some key points you'll learn:
 
 # Exercises
 
-## 1a. Handling nullability
+## 0. Quick Start
 
 When starting a project with Arrow first go to [arrow-kt.io](https://arrow-kt.io/docs/#basic-setup) to include the necessary dependencies.
 The dependencies used in this work shop are included below for convenience
@@ -40,6 +40,8 @@ Don't worry about the **compile time warnings and errors**. It's intended, the e
 For what is worth, you should have your gradle dependencies fetched. Alternatively, you can also **click on the gradle icon** in IntelliJ IDEA to fetch those.
 
 ![Gradle Sync](./assets/gradle_sync.png)
+
+## 1a. Handling nullability
 
 All details endpoint implementations are non optional typed values now coming from the Database. These values may be absent when using an Id to look them up. You must 
 translate that concern to a FP related data type such as `arrow.core.Option`. 
