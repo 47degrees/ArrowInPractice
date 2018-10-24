@@ -37,7 +37,7 @@ To enable Arrow in your project include these dependencies in the `dependencies`
 
 Don't worry about the **compile time warnings and errors**. It's intended, the exercises are all marked as `TODO()` which means they're not implemented yet and therefore making tests fail. Hopefully you'll be the one fixing those! 
 
-For what is worth, you should have your gradle dependencies fetched. Alternatively, you can also **click on the gradle icon** in IntellIJ Idea to fetch those.
+For what is worth, you should have your gradle dependencies fetched. Alternatively, you can also **click on the gradle icon** in IntelliJ IDEA to fetch those.
 
 ![Gradle Sync](./assets/gradle_sync.png)
 
