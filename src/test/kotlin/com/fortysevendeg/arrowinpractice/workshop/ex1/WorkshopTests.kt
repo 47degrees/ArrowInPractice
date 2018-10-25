@@ -24,7 +24,7 @@ class WorkshopTests {
   @Test
   fun `1a should extract params from request`() =
     withTestApplication(Application::setupModule) {
-      with(authorizedRequest(HttpMethod.Get, "/characters/1")) {
+      with(authorizedRequest(HttpMethod.Get, "/")) {
         val call = LocalApplicationCall(this, parametersOf("characterId" to listOf("1")))
         val result = paramOf("characterId", call)
         assertEquals(result, Some("1"))
