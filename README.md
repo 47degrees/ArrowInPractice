@@ -117,14 +117,13 @@ Once this exercise is completed the following test should pass:
 * `1e handle DB exceptions preserving NotFoundExceptions`
 * `1e handle DB exceptions preserving NotFoundExceptions but translating all others to InvalidIdException`
 
-## 2a. Translating raised errors in the context of `IO`
+## 2a. Hanlding independent computations with `Applicative#map()`
 
 When handling multiple ids for unrelated database objects we may independently fetch the objects (`Applicative`) vs explicitly fetching them one after another (`Monad`).
 
 Once this exercise is completed the following test should pass:
 
-* `1e handle DB exceptions preserving NotFoundExceptions`
-* `1e handle DB exceptions preserving NotFoundExceptions but translating all others to InvalidIdException`
+* `2a Return a house Location pairing a house and castle`
 
 Reference Links:
 
